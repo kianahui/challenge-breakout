@@ -64,7 +64,8 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void buildBricks() {
-		buildBrickRow(0, 0, Color.RED);
+		buildBrickRow((WIDTH - (BRICK_WIDTH * NBRICKS_PER_ROW) / 2), 
+					   BRICK_Y_OFFSET, Color.RED);
 	}
 	
 	private void buildBrickRow(double x, double y, Color color) {
