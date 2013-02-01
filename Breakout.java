@@ -79,10 +79,10 @@ public class Breakout extends GraphicsProgram {
 			if (i > 4 && i < 5) {
 				color = Color.YELLOW;
 			}
-			if (i > 6 && i < 7) {
+			if (i > 10 && i < 13) {
 				color = Color.GREEN;
 			}
-			if (i > 8 && i < 9) {
+			if (i > 14 && i < 17) {
 				color = Color.CYAN;
 			}
 			}
