@@ -73,9 +73,6 @@ public class Breakout extends GraphicsProgram {
 			               BRICK_Y_OFFSET + height * (BRICK_SEP + BRICK_HEIGHT), 
 			               color);
 			height ++;
-			if (i > 8 && i < 10) {
-				color = Color.YELLOW;
-			} 
 			if (i > 2 && i < 4) {
 				color = Color.CYAN;
 			} 
@@ -84,7 +81,10 @@ public class Breakout extends GraphicsProgram {
 			}
 			if (i > 6 && i < 8) {
 				color = Color.ORANGE;
-			}
+			}		
+			if (i > 8 && i < 10) {
+				color = Color.YELLOW;
+			} 
 			}
 	}
 	
