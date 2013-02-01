@@ -83,7 +83,6 @@ public class Breakout extends GraphicsProgram {
 				color = Color.ORANGE;
 			}
 			}
-		}
 	}
 	
 	private void buildBrickRow(double x, double y, Color color) {
