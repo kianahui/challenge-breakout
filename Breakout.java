@@ -67,8 +67,8 @@ public class Breakout extends GraphicsProgram {
 		for (int i = NBRICK_ROWS; i > 0; i--) {
 			buildBrickRow((WIDTH - (BRICK_WIDTH * NBRICKS_PER_ROW) - (BRICK_SEP * (NBRICKS_PER_ROW - 1))) / 2, 
 					BRICK_Y_OFFSET, Color.RED);
-			buildBrickRow((WIDTH - (BRICK_WIDTH * NBRICKS_PER_ROW) - (BRICK_SEP * (NBRICKS_PER_ROW - 1))) / 2, 
-					BRICK_Y_OFFSET + height * (BRICK_SEP + BRICK_HEIGHT), Color.RED);
+			//buildBrickRow((WIDTH - (BRICK_WIDTH * NBRICKS_PER_ROW) - (BRICK_SEP * (NBRICKS_PER_ROW - 1))) / 2, 
+				//	BRICK_Y_OFFSET + height * (BRICK_SEP + BRICK_HEIGHT), Color.RED);
 			//buildBrickRow((WIDTH - (BRICK_WIDTH * NBRICKS_PER_ROW) - (BRICK_SEP * (NBRICKS_PER_ROW - 1))) / 2, 
 				//	BRICK_Y_OFFSET + 2 * (BRICK_SEP + BRICK_HEIGHT), Color.ORANGE);
 			height ++;
