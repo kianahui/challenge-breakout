@@ -60,7 +60,7 @@ public class Breakout extends GraphicsProgram {
 	/* Method: run() */
 	/** Runs the Breakout program. */
 	
-	private Color color = red;
+	private Color color = Color.RED;
 	
 	public void run() {
 		buildBricks(0);
@@ -76,7 +76,7 @@ public class Breakout extends GraphicsProgram {
 			if (i > 2 && i < 4) {
 				color = Color.ORANGE;
 			} else {
-				color = Color.RED;
+				color = Color.CYAN;
 			}
 		}
 	}
