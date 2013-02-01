@@ -1,8 +1,8 @@
 /*
  * File: Breakout.java
  * -------------------
- * Name:
- * Section Leader:
+ * Name: Kiana Hui
+ * Section Leader: Arthur Brant
  * 
  * This file will eventually implement the game of Breakout.
  */
@@ -60,6 +60,20 @@ public class Breakout extends GraphicsProgram {
 	/* Method: run() */
 	/** Runs the Breakout program. */
 	public void run() {
-		/* You fill this in, along with any subsidiary methods */
+		buildBricks();
+	}
+	
+	private void buildBricks() {
+		buildBrickRow(0, 0, Color.RED);
+	}
+	
+	private void buildBrickRow(double x, double y, Color color) {
+		for (int i = NBRICKS_PER_ROW; i > 0; i--) {
+			GRect brick =  new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
+			brick.setFilled(true);
+			brick.setColor(color);
+			add(brick);
+			x += BRICK_SEP;
+		}
 	}
 }
