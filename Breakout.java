@@ -60,15 +60,18 @@ public class Breakout extends GraphicsProgram {
 	/* Method: run() */
 	/** Runs the Breakout program. */
 	
-	//private Color color = Color.RED;
-	
 	private GRect paddle;
 	
 	public void run() {
-		buildBricks();
-		buildPaddle();		
+		createGame();
 		addMouseListeners();
 	}
+	
+	private void createGame() {
+		buildBricks();
+		buildPaddle();	
+	}
+	
 	
 	private void buildBricks() {
 		double height = 0;
