@@ -65,7 +65,7 @@ public class Breakout extends GraphicsProgram {
 	public void run() {
 		buildBricks(0);
 		addMouseListeners();		
-		buildPaddle(2);
+		buildPaddle(getWidth());
 	}
 	
 	private void buildBricks(double height) {
