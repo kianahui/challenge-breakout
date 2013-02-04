@@ -63,7 +63,14 @@ public class Breakout extends GraphicsProgram {
 	/** Runs the Breakout program. */
 	
 	private GRect paddle;
+	
 	private GOval ball;
+	
+	private double vx, vy;
+	
+	
+	
+	private RandomGenerator rgen = RandomGenerator.getInstance();
 	
 	public void run() {
 		createGame();
@@ -124,6 +131,12 @@ public class Breakout extends GraphicsProgram {
 		ball.setLocation((WIDTH / 2) - BALL_RADIUS, (HEIGHT / 2) - BALL_RADIUS);
 		ball.setFilled(true);
 		add(ball);
+		
+		vx = rgen.nextDouble(1.0, 3.0);
+        if (rgen.nextBoolean(0.5)) vx = -vx;
+        
+        vy = 3.0;
+		
 	}
 	
 	public void mouseMoved(MouseEvent e) {
@@ -132,6 +145,10 @@ public class Breakout extends GraphicsProgram {
 		if (x < (WIDTH - paddle.getWidth()) && x > 0){
 			paddle.setLocation(x, y);
 		}
+	}
+	
+	public void mousePressed(MouseEvent e) {
+		ball.move(vx, vy);
 	}
 	
 }
