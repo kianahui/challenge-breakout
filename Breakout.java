@@ -63,9 +63,10 @@ public class Breakout extends GraphicsProgram {
 	private Color color = Color.RED;
 	
 	public void run() {
+		addMouseListeners();
 		buildBricks(0);
 		buildPaddle();		
-		addMouseListeners();
+		
 	}
 	
 	private void buildBricks(double height) {
