@@ -50,6 +50,8 @@ public class Breakout extends GraphicsProgram {
 
 	/** Radius of the ball in pixels */
 	private static final int BALL_RADIUS = 10;
+	
+	private static final int BALL_DIAMETER = BALL_RADIUS * 2;
 
 	/** Offset of the top brick row from the top */
 	private static final int BRICK_Y_OFFSET = 70;
@@ -61,9 +63,11 @@ public class Breakout extends GraphicsProgram {
 	/** Runs the Breakout program. */
 	
 	private GRect paddle;
+	private GOval ball = new GOval (BALL_DIAMETER, BALL_DIAMETER);
 	
 	public void run() {
 		createGame();
+		playBall();
 		addMouseListeners();
 	}
 	
@@ -113,6 +117,10 @@ public class Breakout extends GraphicsProgram {
 		paddle.setLocation((WIDTH - paddle.getWidth()) / 2, HEIGHT - PADDLE_Y_OFFSET);
 		paddle.setFilled(true);
 		add(paddle);
+	}
+	
+	private void playBall() {
+		ball.setLocation((WIDTH / 2) - BALL_RADIUS, (HEIGHT / 2) - BALL_RADIUS);
 	}
 	
 	public void mouseMoved(MouseEvent e) {
