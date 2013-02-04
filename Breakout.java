@@ -146,7 +146,7 @@ public class Breakout extends GraphicsProgram {
 	
 	public void mousePressed(MouseEvent e) {
 
-		while (ball.getY() > PADDLE_Y_OFFSET) {
+		while (true) {
 			vx = rgen.nextDouble(1.0, 3.0);
 	        if (rgen.nextBoolean(0.5)) vx = -vx;
 	        
