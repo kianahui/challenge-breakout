@@ -64,12 +64,13 @@ public class Breakout extends GraphicsProgram {
 	
 	public void run() {
 		addMouseListeners();
-		buildBricks(0);
+		buildBricks();
 		buildPaddle();		
 		
 	}
 	
-	private void buildBricks(double height) {
+	private void buildBricks() {
+		double height = 0;
 		for (int i = 0; i < NBRICK_ROWS; i++) {
 			buildBrickRow((WIDTH - (BRICK_WIDTH * NBRICKS_PER_ROW) - 
 					      (BRICK_SEP * (NBRICKS_PER_ROW - 1))) / 2, 
@@ -109,7 +110,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	public void mouseMoved(MouseEvent e) {
-		double x = e.getX();
+		int x = e.getX();
 		//double y = getHeight() - PADDLE_Y_OFFSET;
 		paddle.setLocation(x, paddle.getY());
 	}
