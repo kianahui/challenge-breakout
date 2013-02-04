@@ -149,9 +149,9 @@ public class Breakout extends GraphicsProgram {
         if (rgen.nextBoolean(0.5)) vx = -vx;
         
         vy = 3.0;
-		while (ball.getY() > PADDLE_Y_OFFSET) {
+		//while (ball.getY() > PADDLE_Y_OFFSET) {
 			ball.move(vx, vy);
-		}
+	//	}
 	}
 	
 }
