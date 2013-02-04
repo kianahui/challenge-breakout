@@ -71,8 +71,8 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void buildBricks() {
-		Color color = Color.RED;
 		double height = 0;
+		Color color = Color.RED;
 		for (int i = 0; i < NBRICK_ROWS; i++) {
 			buildBrickRow((WIDTH - (BRICK_WIDTH * NBRICKS_PER_ROW) - 
 					      (BRICK_SEP * (NBRICKS_PER_ROW - 1))) / 2, 
@@ -87,16 +87,19 @@ public class Breakout extends GraphicsProgram {
 				color = Color.GREEN;
 			} else if (i > 6 && i < 8) {
 				color = Color.CYAN;		
+			} else if (i > 8 && i <10) {
+				color = Color.RED;
 			}
 		}
 	}
 	
 	
 	private void buildBrickRow(double x, double y, Color color) {
+		color = color.RED;
 		for (int i = NBRICKS_PER_ROW; i > 0; i--) {
 			GRect brick =  new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 			brick.setFilled(true);
-			brick.setColor(Color.RED);
+			brick.setColor(color);
 			add(brick);
 			x = BRICK_WIDTH + BRICK_SEP + x;
 		}
