@@ -60,7 +60,7 @@ public class Breakout extends GraphicsProgram {
 	/* Method: run() */
 	/** Runs the Breakout program. */
 	
-	private Color color = Color.RED;
+	//private Color color = Color.RED;
 	
 	private GRect paddle;
 	
@@ -71,6 +71,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void buildBricks() {
+		Color color = Color.RED;
 		double height = 0;
 		for (int i = 0; i < NBRICK_ROWS; i++) {
 			buildBrickRow((WIDTH - (BRICK_WIDTH * NBRICKS_PER_ROW) - 
@@ -95,7 +96,7 @@ public class Breakout extends GraphicsProgram {
 		for (int i = NBRICKS_PER_ROW; i > 0; i--) {
 			GRect brick =  new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 			brick.setFilled(true);
-			brick.setColor(color);
+			brick.setColor(Color.RED);
 			add(brick);
 			x = BRICK_WIDTH + BRICK_SEP + x;
 		}
@@ -112,7 +113,7 @@ public class Breakout extends GraphicsProgram {
 	public void mouseMoved(MouseEvent e) {
 		double x = e.getX() - (paddle.getWidth() / 2);
 		double y = HEIGHT - PADDLE_Y_OFFSET;
-		if (x < (WIDTH - (paddle.getWidth())) && x > 0){
+		if (x < (WIDTH - paddle.getWidth()) && x > 0){
 			paddle.setLocation(x, y);
 		}
 	}
