@@ -33,7 +33,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int PADDLE_Y_OFFSET = 30;
 
 	/** Number of bricks per row */
-	private static final int NBRICKS_PER_ROW = 1;
+	private static final int NBRICKS_PER_ROW = 10;
 
 	/** Number of rows of bricks */
 	private static final int NBRICK_ROWS = 10;
@@ -104,15 +104,17 @@ public class Breakout extends GraphicsProgram {
 	
 	private void buildPaddle() {
 		paddle = new GRect (PADDLE_WIDTH, PADDLE_HEIGHT);
-		paddle.setLocation((getWidth() - paddle.getWidth()) / 2,getHeight() - PADDLE_Y_OFFSET);
+		paddle.setLocation((WIDTH - paddle.getWidth()) / 2, HEIGHT - PADDLE_Y_OFFSET);
 		paddle.setFilled(true);
 		add(paddle);
 	}
 	
 	public void mouseMoved(MouseEvent e) {
 		double x = e.getX() - (paddle.getWidth() / 2);
-		double y = getHeight() - PADDLE_Y_OFFSET;
-		paddle.setLocation(x, y);
+		double y = HEIGHT - PADDLE_Y_OFFSET;
+		if (x < (WIDTH - (paddle.getWidth() / 2)) && x > 0){
+			paddle.setLocation(x, y);
+		}
 	}
 	
 }
