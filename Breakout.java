@@ -65,7 +65,7 @@ public class Breakout extends GraphicsProgram {
 	public void run() {
 		buildBricks(0);
 		addMouseListeners();		
-		buildPaddle(0);
+		buildPaddle();
 	}
 	
 	private void buildBricks(double height) {
@@ -100,15 +100,15 @@ public class Breakout extends GraphicsProgram {
 	
 	private GRect paddle;
 	
-	private void buildPaddle(double x) {
-		GRect paddle = new GRect (x, getHeight() - PADDLE_Y_OFFSET, PADDLE_WIDTH, PADDLE_HEIGHT);
+	private void buildPaddle() {
+		GRect paddle = new GRect (0, getHeight() - PADDLE_Y_OFFSET, PADDLE_WIDTH, PADDLE_HEIGHT);
 		paddle.setFilled(true);
 		add(paddle);
 	}
 	
 	public void mouseMoved(MouseEvent e) {
 		double x = e.getX();
-		paddle.setLocation(x, PADDLE_Y_OFFSET);
+		paddle.setLocation(x, getHeight() - PADDLE_Y_OFFSET);
 	}
 	
 }
