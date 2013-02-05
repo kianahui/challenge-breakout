@@ -94,7 +94,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private boolean isBallAboveCeiling(GOval ball) {
 		double topOfBall = ball.getY();
-		return topOfBall <= HEIGHT;
+		return topOfBall >= HEIGHT;
 	}
 	
 	private boolean isBallOffWall(GOval ball) {
