@@ -72,7 +72,7 @@ public class Breakout extends GraphicsProgram {
 	
 	public void run() {
 		createGame();
-		playBall();
+		makeBall();
 		addMouseListeners();
 	}
 	
@@ -81,6 +81,12 @@ public class Breakout extends GraphicsProgram {
 		buildPaddle();	
 	}
 	
+	private void moveBall() {
+		while (ball.getY() < HEIGHT - BALL_DIAMETER && ball.getX() < WIDTH - BALL_DIAMETER) {
+			ball.move(vx, vy);
+		}
+	}
+
 	
 	private void buildBricks() {
 		double height = 0;
@@ -124,14 +130,11 @@ public class Breakout extends GraphicsProgram {
 		add(paddle);
 	}
 	
-	private void playBall() {
+	private void makeBall() {
 		ball = new GOval (BALL_DIAMETER, BALL_DIAMETER);
 		ball.setLocation((WIDTH / 2) - BALL_RADIUS, (HEIGHT / 2) - BALL_RADIUS);
 		ball.setFilled(true);
 		add(ball);
-		/*while (ball.getY() < HEIGHT - BALL_DIAMETER && ball.getX() < WIDTH - BALL_DIAMETER) {
-			ball.move(vx, vy);
-		}*/
 	}
 	
 	public void mouseMoved(MouseEvent e) {
