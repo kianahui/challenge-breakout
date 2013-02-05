@@ -80,7 +80,6 @@ public class Breakout extends GraphicsProgram {
 			moveBall();
 			if (ball.getY() < HEIGHT - BALL_DIAMETER) {
 				vx = -vx;
-				vy = -vy;
 			}
 		}
 		
