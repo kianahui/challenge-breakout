@@ -82,14 +82,30 @@ public class Breakout extends GraphicsProgram {
 			if (isBallBelowGround(ball)) {
 				vy = -vy;
 				moveBall();
+			} else if (isBallAboveCeiling(ball)) {
+				vy = -vy;
+				moveBall();
+			} else if (isBallOffWall(ball)) {
+				vx = - vx;
+				moveBall();
 			}
 		}
 		
 	}
 	
+	private boolean isBallAboveCeiling(GOval ball) {
+		double topOfBall = ball.getY() + ball.getHeight();
+		return topOfBall >= HEIGHT;
+	}
+	
+	private boolean isBallOffWall(GOval ball) {
+		double sideOfBall = ball.getX() + ball.getWidth();
+		return sideOfBall >= WIDTH;
+	}
+	
 	private boolean isBallBelowGround(GOval ball) {
 		double bottomOfBall = ball.getY() + ball.getHeight();
-		return bottomOfBall >= getHeight();
+		return bottomOfBall >= HEIGHT;
 	}
 	
 	private void createGame() {
