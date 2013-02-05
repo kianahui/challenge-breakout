@@ -77,7 +77,6 @@ public class Breakout extends GraphicsProgram {
 		createGame();
 		makeBall();
 		while (true) {
-			moveBall();
 			if (isBallBelowGround(ball)) {
 				vy = -vy;
 			} else if (isBallAboveCeiling(ball)) {
