@@ -86,8 +86,22 @@ public class Breakout extends GraphicsProgram {
 				vx = -vx;
 			} else if (isBallOffLeft(ball)) {
 				vx = -vx;
-			} moveBall();
+			} 
+			moveBall();
 		}
+	}
+	
+	public GObject getElementAt(double x, double y) {
+		return ball;
+	}
+	
+	private GObject getCollidingObject() {
+		getElementAt(ball.getX(), ball.getY());
+		getElementAt(ball.getX() + BALL_DIAMETER, ball.getY());
+		getElementAt(ball.getX(), ball.getY() + BALL_DIAMETER);
+		getElementAt(ball.getX() + BALL_DIAMETER, ball.getY() + BALL_DIAMETER);
+		GObject collider = getCollidingObject();
+		return collider;
 	}
 	
 	private boolean isBallAboveCeiling(GOval ball) {
