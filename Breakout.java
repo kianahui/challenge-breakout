@@ -142,11 +142,12 @@ public class Breakout extends GraphicsProgram {
 	public void mousePressed(MouseEvent e) {
 
 		while (ball.getY() < HEIGHT - BALL_DIAMETER && ball.getX() < WIDTH - BALL_DIAMETER) {
-			pause(5);
-			ball.move(vx, vy);
 			vx = rgen.nextDouble(1.0, 3.0);
 	        if (rgen.nextBoolean(0.5)) vx = -vx;
 	        vy = 3.0;
+			pause(5);
+			ball.move(vx, vy);
+
 		}
 	}
 	
