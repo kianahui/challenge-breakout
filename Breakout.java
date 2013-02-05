@@ -72,8 +72,7 @@ public class Breakout extends GraphicsProgram {
 	
 	public void run() {
 		createGame();
-		//makeBall();
-		//moveBall();
+		makeBall();
 		addMouseListeners();
 	}
 	
@@ -150,6 +149,7 @@ public class Breakout extends GraphicsProgram {
 		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
 		vy = 3.0;
+		moveBall();
 	}
 
 }
