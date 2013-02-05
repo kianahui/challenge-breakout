@@ -129,6 +129,10 @@ public class Breakout extends GraphicsProgram {
 		ball.setLocation((WIDTH / 2) - BALL_RADIUS, (HEIGHT / 2) - BALL_RADIUS);
 		ball.setFilled(true);
 		add(ball);
+		while (ball.getY() < HEIGHT - BALL_DIAMETER && ball.getX() < WIDTH - BALL_DIAMETER) {
+			ball.move(vx, vy);
+		}
+		pause(1000/48);
 	}
 	
 	public void mouseMoved(MouseEvent e) {
@@ -143,10 +147,6 @@ public class Breakout extends GraphicsProgram {
 		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
 		vy = 3.0;
-		while (ball.getY() < HEIGHT - BALL_DIAMETER && ball.getX() < WIDTH - BALL_DIAMETER) {
-			ball.move(vx, vy);
-		}
-		pause(1000/48);
 	}
 
 }
