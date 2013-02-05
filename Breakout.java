@@ -76,7 +76,8 @@ public class Breakout extends GraphicsProgram {
 		addMouseListeners();
 		createGame();
 		makeBall();
-		while (ball.getY() < HEIGHT - BALL_DIAMETER || ball.getX() < WIDTH - BALL_DIAMETER) {
+		while (true) {
+			/* ball.getY() < HEIGHT - BALL_DIAMETER || ball.getX() < WIDTH - BALL_DIAMETER */
 			moveBall();
 			if (isBallBelowGround(ball)) {
 				vy = -vy;
