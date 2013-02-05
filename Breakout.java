@@ -68,8 +68,6 @@ public class Breakout extends GraphicsProgram {
 	
 	private double vx, vy;
 	
-	
-	
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 	
 	public void run() {
@@ -150,9 +148,8 @@ public class Breakout extends GraphicsProgram {
         
         vy = 3.0;
 		while (ball.getY() < HEIGHT) {
-
 			ball.move(vx, vy);
-			pause(1000/48);
+			pause(50);
 		}
 	}
 	
