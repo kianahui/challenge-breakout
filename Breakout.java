@@ -89,7 +89,7 @@ public class Breakout extends GraphicsProgram {
 		//while (ball.getY() < HEIGHT - BALL_DIAMETER && ball.getX() < WIDTH - BALL_DIAMETER) {
 		
 			ball.move(vx, vy);
-			pause(5);
+			pause(10);
 		
 	}
 
