@@ -80,6 +80,7 @@ public class Breakout extends GraphicsProgram {
 			moveBall();
 			if (isBallBelowGround(ball)) {
 				vy = -vy;
+				moveBall();
 			}
 		}
 		
