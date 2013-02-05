@@ -58,6 +58,8 @@ public class Breakout extends GraphicsProgram {
 
 	/** Number of turns */
 	private static final int NTURNS = 3;
+	
+	private static final int PAUSE_TIME = 10;
 
 	/* Method: run() */
 	/** Runs the Breakout program. */
@@ -87,10 +89,8 @@ public class Breakout extends GraphicsProgram {
 	
 	private void moveBall() {
 		//while (ball.getY() < HEIGHT - BALL_DIAMETER && ball.getX() < WIDTH - BALL_DIAMETER) {
-		
-			ball.move(vx, vy);
-			pause(10);
-		
+		ball.move(vx, vy);
+		pause(PAUSE_TIME);
 	}
 
 	
