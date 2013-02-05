@@ -102,11 +102,20 @@ public class Breakout extends GraphicsProgram {
 	
 	
 	private GObject getCollidingObject() {
-		getElementAt(ball.getX(), ball.getY());
-		getElementAt(ball.getX() + BALL_DIAMETER, ball.getY());
-		getElementAt(ball.getX(), ball.getY() + BALL_DIAMETER);
-		getElementAt(ball.getX() + BALL_DIAMETER, ball.getY() + BALL_DIAMETER);
-		return ball;
+		GObject collider = new GObject();
+		if (getElementAt(ball.getX(), ball.getY()) != null) {
+			collider = getElementAt(ball.getX(), ball.getY());
+		}
+		if (getElementAt(ball.getX() + BALL_DIAMETER, ball.getY()) != null) {
+			collider = getElementAt(ball.getX() + BALL_DIAMETER, ball.getY());
+		}
+		if (getElementAt(ball.getX(), ball.getY() + BALL_DIAMETER) != null) {
+			collider = getElementAt(ball.getX(), ball.getY() + BALL_DIAMETER);
+		}
+		if (getElementAt(ball.getX() + BALL_DIAMETER, ball.getY() + BALL_DIAMETER) != null) {
+			collider = getElementAt(ball.getX() + BALL_DIAMETER, ball.getY() + BALL_DIAMETER);
+		}
+		return collider;
 	}
 	
 	private boolean isBallAboveCeiling(GOval ball) {
