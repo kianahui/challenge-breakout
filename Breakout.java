@@ -77,19 +77,15 @@ public class Breakout extends GraphicsProgram {
 		createGame();
 		makeBall();
 		while (true) {
-			moveBall();
+			//moveBall();
 			if (isBallBelowGround(ball)) {
 				vy = -vy;
-				//moveBall();
 			} else if (isBallAboveCeiling(ball)) {
 				vy = -vy;
-				//moveBall();
 			} else if (isBallOffRight(ball)) {
 				vx = -vx;
-				//moveBall();
 			//} else if (isBallOffLeft(ball)) {
 				//vx = -vx;
-				//moveBall();
 			}
 			moveBall();
 		}
