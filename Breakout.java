@@ -92,17 +92,17 @@ public class Breakout extends GraphicsProgram {
 	
 	private boolean isBallAboveCeiling(GOval ball) {
 		double topOfBall = ball.getY();
-		return topOfBall >= 0;
+		return topOfBall <= 0;
 	}
 	
 	private boolean isBallOffRight(GOval ball) {
 		double sideOfBall = ball.getX() + BALL_DIAMETER;
-		return sideOfBall <= WIDTH;
+		return sideOfBall >= WIDTH;
 	}
 	
 	private boolean isBallOffLeft(GOval ball) {
 		double sideOfBall = ball.getX();
-		return sideOfBall >= 0;
+		return sideOfBall <= 0;
 	}
 	
 	private boolean isBallBelowGround(GOval ball) {
