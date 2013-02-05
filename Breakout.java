@@ -84,11 +84,10 @@ public class Breakout extends GraphicsProgram {
 				vy = -vy;
 			} else if (isBallOffRight(ball)) {
 				vx = -vx;
-			//} else if (isBallOffLeft(ball)) {
-				//vx = -vx;
-			}
+			} else if (isBallOffLeft(ball)) {
+				vx = -vx;
+			} moveBall();
 		}
-		
 	}
 	
 	private boolean isBallAboveCeiling(GOval ball) {
