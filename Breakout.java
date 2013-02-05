@@ -113,7 +113,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private boolean isBallBelowGround(GOval ball) {
 		double bottomOfBall = ball.getY() + BALL_DIAMETER;
-		return bottomOfBall >= HEIGHT;
+		return bottomOfBall <= HEIGHT;
 	}
 	
 	private void createGame() {
