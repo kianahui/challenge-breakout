@@ -86,7 +86,6 @@ public class Breakout extends GraphicsProgram {
 				moveBall();
 			} else if (isBallOffRight(ball)) {
 				vx = -vx;
-				moveBall();
 			} else if (isBallOffLeft(ball)) {
 				vx = -vx;
 				moveBall();
