@@ -73,6 +73,7 @@ public class Breakout extends GraphicsProgram {
 	public void run() {
 		createGame();
 		makeBall();
+		moveBall();
 		addMouseListeners();
 	}
 	
