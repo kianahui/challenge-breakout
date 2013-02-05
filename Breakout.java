@@ -129,9 +129,6 @@ public class Breakout extends GraphicsProgram {
 		ball.setLocation((WIDTH / 2) - BALL_RADIUS, (HEIGHT / 2) - BALL_RADIUS);
 		ball.setFilled(true);
 		add(ball);
-		
-
-		
 	}
 	
 	public void mouseMoved(MouseEvent e) {
