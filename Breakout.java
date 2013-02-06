@@ -76,6 +76,10 @@ public class Breakout extends GraphicsProgram {
 		addMouseListeners();
 		createGame();
 		makeBall();
+		makeBallBounce();
+	}
+	
+	private void makeBallBounce() {
 		while (true) {
 			moveBall();
 			if (isBallBelowGround(ball)) {
@@ -89,33 +93,29 @@ public class Breakout extends GraphicsProgram {
 			} 
 			moveBall();
 		}
-		/*getCollidingObject();
+		GObject collider = getCollidingObject();
 		if (collider != null) {
 			vy = -vy;
 			moveBall();
-		}*/
+		}
 	}
 	
 	public GObject getElementAt(double x, double y) {
 		return ball;
 	}
-	
-	private GObject collider;
+
 	private GObject getCollidingObject() {
-		//GObject collider = new GObject();
 		if (getElementAt(ball.getX(), ball.getY()) != null) {
-			collider = getElementAt(ball.getX(), ball.getY());
+			return getElementAt(ball.getX(), ball.getY());
+		} else if (getElementAt(ball.getX() + BALL_DIAMETER, ball.getY()) != null) {
+			return getElementAt(ball.getX() + BALL_DIAMETER, ball.getY());
+		} else if (getElementAt(ball.getX(), ball.getY() + BALL_DIAMETER) != null) {
+			return getElementAt(ball.getX(), ball.getY() + BALL_DIAMETER);
+		} else if (getElementAt(ball.getX() + BALL_DIAMETER, ball.getY() + BALL_DIAMETER) != null) {
+			return getElementAt(ball.getX() + BALL_DIAMETER, ball.getY() + BALL_DIAMETER);
+		} else {
+			return null;
 		}
-		if (getElementAt(ball.getX() + BALL_DIAMETER, ball.getY()) != null) {
-			collider = getElementAt(ball.getX() + BALL_DIAMETER, ball.getY());
-		}
-		if (getElementAt(ball.getX(), ball.getY() + BALL_DIAMETER) != null) {
-			collider = getElementAt(ball.getX(), ball.getY() + BALL_DIAMETER);
-		}
-		if (getElementAt(ball.getX() + BALL_DIAMETER, ball.getY() + BALL_DIAMETER) != null) {
-			collider = getElementAt(ball.getX() + BALL_DIAMETER, ball.getY() + BALL_DIAMETER);
-		}
-		return collider;
 	}
 	
 	private boolean isBallAboveCeiling(GOval ball) {
