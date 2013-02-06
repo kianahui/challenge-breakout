@@ -68,6 +68,8 @@ public class Breakout extends GraphicsProgram {
 	
 	private GOval ball;
 	
+	private GRect brick;
+	
 	private double vx, vy;
 	
 	private RandomGenerator rgen = RandomGenerator.getInstance();
@@ -87,7 +89,6 @@ public class Breakout extends GraphicsProgram {
 				vx = -vx;
 			} 	
 			checkForCollisions();
-		//	moveBall();
 		}
 	}
 	
@@ -95,7 +96,9 @@ public class Breakout extends GraphicsProgram {
 		GObject collider = getCollidingObject();
 		if (collider == paddle) {
 			vy = -vy;
-		}	
+		} else if (collider == brick) {
+			remove(brick);
+		}
 	}
 	
 	public GObject getElementAt(double x, double y) {
@@ -174,7 +177,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private void buildBrickRow(double x, double y, Color color) {
 		for (int i = NBRICKS_PER_ROW; i > 0; i--) {
-			GRect brick =  new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
+			brick =  new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 			brick.setFilled(true);
 			brick.setColor(color);
 			add(brick);
