@@ -91,20 +91,17 @@ public class Breakout extends GraphicsProgram {
 			} 	
 		}
 	}
-	
+
 	private void checkForCollisions() {
 		GObject collider = getCollidingObject();
 		if (collider == paddle) {
 			vy = -vy;
 		} else if (collider == brick) {
 			remove(brick);
+			vy = -vy;
 		}
 	}
 	
-	//public GObject getElementAt(double x, double y) {
-	//	return ball;
-	//}
-
 	private GObject getCollidingObject() {
 		if (getElementAt(ball.getX(), ball.getY()) != null) {
 			return getElementAt(ball.getX(), ball.getY());
@@ -177,7 +174,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private void buildBrickRow(double x, double y, Color color) {
 		for (int i = NBRICKS_PER_ROW; i > 0; i--) {
-			brick =  new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
+			brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 			brick.setFilled(true);
 			brick.setColor(color);
 			add(brick);
