@@ -182,12 +182,14 @@ public class Breakout extends GraphicsProgram {
 	
 	
 	private void buildBrickRow(double x, double y, Color color) {
+		GObject totalbricks = brick;
 		for (int i = NBRICKS_PER_ROW; i > 0; i--) {
 			brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 			brick.setFilled(true);
 			brick.setColor(color);
 			add(brick);
 			x = BRICK_WIDTH + BRICK_SEP + x;
+			totalbricks += brick;
 		}
 	}
 
