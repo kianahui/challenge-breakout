@@ -82,22 +82,17 @@ public class Breakout extends GraphicsProgram {
 	private void makeBallBounce() {
 		while (true) {
 			moveBall();
-			if (isBallBelowGround(ball)) {
+			if (isBallBelowGround(ball) || isBallAboveCeiling(ball) {
 				vy = -vy;
-			} else if (isBallAboveCeiling(ball)) {
-				vy = -vy;
-			} else if (isBallOffRight(ball)) {
-				vx = -vx;
-			} else if (isBallOffLeft(ball)) {
+			} else if (isBallOffRight(ball) || isBallOffLeft(ball)) {
 				vx = -vx;
 			} 
-			//moveBall();
-			GObject collider = getCollidingObject();
+			moveBall();
+		/*GObject collider = getCollidingObject();
 			if (collider != null) {
 				vy = -vy;
 				//moveBall();
-			}
-			moveBall();
+			}*/
 		}
 
 
