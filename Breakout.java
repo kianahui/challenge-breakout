@@ -77,18 +77,21 @@ public class Breakout extends GraphicsProgram {
 	public void run() {
 		addMouseListeners();
 		createGame();
-		makeBallBounce();
+		playGame();
 	}
 	
-	private void makeBallBounce() {
+	private void playGame() {
 		while (true) {
 			checkForCollisions();
 			moveBall();
-			if (isBallBelowGround(ball) || isBallAboveCeiling(ball)) {
+			if (isBallAboveCeiling(ball)) {
 				vy = -vy;
 			} else if (isBallOffRight(ball) || isBallOffLeft(ball)) {
 				vx = -vx;
-			} 	
+			} else if (isBallBelowGround(ball)) {
+				removeAll();
+				println("Game over.");
+			}
 		}
 	}
 
