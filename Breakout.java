@@ -93,7 +93,8 @@ public class Breakout extends GraphicsProgram {
 			} 
 			moveBall();
 		}
-		GObject collider = getCollidingObject();
+		GObject collider = new GObject();
+		collider = getCollidingObject();
 		if (collider != null) {
 			vy = -vy;
 			moveBall();
