@@ -76,12 +76,12 @@ public class Breakout extends GraphicsProgram {
 		addMouseListeners();
 		createGame();
 		makeBall();
+		makeBallBounce();
 		GObject collider = getCollidingObject();
 		if (collider != null) {
 			vy = -vy;
 			moveBall();
 		}
-		makeBallBounce();
 	}
 	
 	private void makeBallBounce() {
