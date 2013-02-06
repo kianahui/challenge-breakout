@@ -75,13 +75,12 @@ public class Breakout extends GraphicsProgram {
 	public void run() {
 		addMouseListeners();
 		createGame();
-		makeBall();
 
 		makeBallBounce();
 	}
 	
 	private void makeBallBounce() {
-		while (getCollidingObject() != null) {
+		while (true) {
 			moveBall();
 			if (isBallBelowGround(ball)) {
 				vy = -vy;
@@ -96,7 +95,7 @@ public class Breakout extends GraphicsProgram {
 			GObject collider = getCollidingObject();
 			if (collider != null) {
 				vy = -vy;
-				moveBall();
+				//moveBall();
 			}
 		}
 
@@ -144,6 +143,7 @@ public class Breakout extends GraphicsProgram {
 	private void createGame() {
 		buildBricks();
 		buildPaddle();	
+		makeBall();
 	}
 	
 	private void moveBall() {
