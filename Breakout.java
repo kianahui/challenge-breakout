@@ -102,7 +102,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	public GObject getElementAt(double x, double y) {
-		return ball;
+		return getElementAt(x, y);
 	}
 
 	private GObject getCollidingObject() {
