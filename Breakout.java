@@ -90,7 +90,13 @@ public class Breakout extends GraphicsProgram {
 				vx = -vx;
 			} else if (isBallBelowGround(ball)) {
 				removeAll();
-				println("Game over.");
+				GLabel label = new GLabel("GAMEOVER!");
+				label.setFont("SansSerif-28");
+				label.setColor(Color.RED);
+				double x = (getWidth() - label.getWidth()) / 2;
+				double y = (getHeight() + label.getAscent()) / 2;
+				label.setLocation(x, y);
+				add(label);
 			}
 		}
 	}
