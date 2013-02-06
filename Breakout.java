@@ -75,7 +75,6 @@ public class Breakout extends GraphicsProgram {
 	public void run() {
 		addMouseListeners();
 		createGame();
-
 		makeBallBounce();
 	}
 	
@@ -88,9 +87,9 @@ public class Breakout extends GraphicsProgram {
 			} else if (isBallOffRight(ball) || isBallOffLeft(ball)) {
 				vx = -vx;
 			} 
-			if (collider != null) {
+			/*if (collider != null) {
 				vy = -vy;
-			}			
+			}	*/		
 			moveBall();
 		}
 
