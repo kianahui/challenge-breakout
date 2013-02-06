@@ -79,21 +79,23 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void makeBallBounce() {
-		GObject collider = getCollidingObject();
 		while (true) {
 			moveBall();
 			if (isBallBelowGround(ball) || isBallAboveCeiling(ball)) {
 				vy = -vy;
 			} else if (isBallOffRight(ball) || isBallOffLeft(ball)) {
 				vx = -vx;
-			} 
-			if (collider == paddle) {
-				vy = -vy;
-			}		
+			} 	
+			checkForCollisions();
 			moveBall();
 		}
-
-
+	}
+	
+	private void checkForCollisions() {
+		GObject collider = getCollidingObject();
+		if (collider == paddle) {
+			vy = -vy;
+		}	
 	}
 	
 	public GObject getElementAt(double x, double y) {
