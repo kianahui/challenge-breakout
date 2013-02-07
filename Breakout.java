@@ -153,7 +153,7 @@ public class Breakout extends GraphicsProgram {
 				makeBall();
 				pause(TURN_PAUSE_TIME);
 			}
-			if (bricksRemaining < 90) {
+			if (bricksRemaining < 95) {
 				vy = vy * 2;
 			}
 		}
