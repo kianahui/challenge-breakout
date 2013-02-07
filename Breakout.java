@@ -60,22 +60,31 @@ public class Breakout extends GraphicsProgram {
 	private static final int NTURNS = 3;
 	
 	private static final int PAUSE_TIME = 10;
-
+	
+	private static final int BALL_PAUSE_TIME = 100;
+	
+	/* Audio file for bouncing */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
 	
 	/* Method: run() */
 	/** Runs the Breakout program. */
 	
+	/* Instance variable to make the paddle accessible */
 	private GRect paddle;
 	
+	/* Instance variable to make the ball accessible */
 	private GOval ball;
 	
+	/* Instance variable to make the brick accessible */
 	private GRect brick;
 	
+	/* Instance variable to count the bricks remaining */
 	private int bricksRemaining;
 	
+	/* Instance variable to keep track of the velocity of the ball */
 	private double vx, vy;
 	
+	/* Instance variable to generate random numbers */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 	
 	public void run() {
@@ -94,8 +103,28 @@ public class Breakout extends GraphicsProgram {
 
 	}
 	
+	
+	/*
+	 * 
+	 */
 	private void playGame() {
+		/*
+		 * Creates a variable for the number of turns remaining,
+		 * set at the total number of turns here.
+		 */
 		int turnsRemaining = NTURNS;
+		/*
+		 * A while loop that continues while the number
+		 * of turns remaining is greater than 0 and the number
+		 * of bricks remaining is greater than 0.
+		 * 
+		 * First, the loop checks for collisions and moves the ball.
+		 * If the ball hits the window frame, it reverses direction.
+		 * If the ball hits the ground, it is removed, and the user
+		 * must click to make a new ball appear that will pause until it
+		 * moves again. The number of turns remaining is subtracted by 1
+		 * every time the ball hits the ground.
+		 */
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
 			moveBall();
@@ -109,19 +138,26 @@ public class Breakout extends GraphicsProgram {
 				remove(ball);
 				waitForClick();
 				makeBall();
-				pause(1000);
+				pause(BALL_PAUSE_TIME);
 				turnsRemaining--;
 			}
 		}
-		remove(ball);
+		/*
+		 * Once the game is over, the screen is cleared,
+		 * and text is displayed showing if the user won or lost.
+		 */
+		removeAll();
 		if (turnsRemaining == 0) {
-			endingGame("GAMEOVER!", Color.RED);
+			endingGame("GAME OVER!", Color.RED);
 		}
 		if (bricksRemaining == 0) {
 			endingGame("YOU WIN!", Color.BLUE);
 		}
 	}
 	
+	/*
+	 * A method for ending the game that makes a label.
+	 */
 	private void endingGame(String phrase, Color color) {
 		GLabel label = new GLabel(phrase);
 		label.setFont("SansSerif-20");
@@ -132,6 +168,11 @@ public class Breakout extends GraphicsProgram {
 		add(label);
 	}
 
+	/*
+	 * A method that checks for collisions by setting an object
+	 * to something that has collided. The ball bounces off the
+	 * paddle and deletes bricks if hit.
+	 */
 	private void checkForCollisions() {
 		GObject collider = getCollidingObject();
 		if (collider != null) {
@@ -148,6 +189,11 @@ public class Breakout extends GraphicsProgram {
 
 	}
 	
+	/*
+	 * A method to return the object the ball has collided with at a given point.
+	 * If a corner of the ball hit something, the method will return what the ball
+	 * has hit. If not, it will return null.
+	 */
 	private GObject getCollidingObject() {
 		if (getElementAt(ball.getX(), ball.getY()) != null) {
 			return getElementAt(ball.getX(), ball.getY());
@@ -162,26 +208,42 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 	
+	/*
+	 * Checks if the ball goes above the ceiling.
+	 */
 	private boolean isBallAboveCeiling(GOval ball) {
 		double topOfBall = ball.getY();
 		return topOfBall <= 0;
 	}
 	
+	/*
+	 * Checks if the ball goes beyond the right wall.
+	 */
 	private boolean isBallOffRight(GOval ball) {
 		double sideOfBall = ball.getX() + BALL_DIAMETER;
 		return sideOfBall >= WIDTH;
 	}
 	
+	/*
+	 * Checks if the ball goes beyond the left wall.
+	 */
 	private boolean isBallOffLeft(GOval ball) {
 		double sideOfBall = ball.getX();
 		return sideOfBall <= 0;
 	}
 	
+	/*
+	 * Checks if the ball goes below the ground.
+	 */
 	private boolean isBallBelowGround(GOval ball) {
 		double bottomOfBall = ball.getY() + BALL_DIAMETER;
 		return bottomOfBall >= HEIGHT;
 	}
 	
+	/*
+	 * Creates the setting for the game and sets the number
+	 * of bricks remaining to the total bricks present.
+	 */
 	private void createGame() {
 		buildBricks();
 		bricksRemaining = NBRICK_ROWS * NBRICKS_PER_ROW;
@@ -189,12 +251,18 @@ public class Breakout extends GraphicsProgram {
 		makeBall();
 	}
 	
+	/*
+	 * Moves the ball.
+	 */
 	private void moveBall() {
 		ball.move(vx, vy);
 		pause(PAUSE_TIME);
 	}
 
-	
+	/*
+	 * Builds the bricks by building successive rows. Colors the bricks
+	 * by identifying i in the for loop. 
+	 */
 	private void buildBricks() {
 		double height = 0;
 		Color color = Color.RED;
@@ -218,7 +286,10 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 	
-	
+	/*
+	 * Builds a row of bricks by building bricks next to each other
+	 * with the set separation space in between.
+	 */
 	private void buildBrickRow(double x, double y, Color color) {
 		for (int i = NBRICKS_PER_ROW; i > 0; i--) {
 			brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
@@ -229,7 +300,9 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 
-	
+	/*
+	 * Builds the paddle, originally placed in the center of the window.
+	 */
 	private void buildPaddle() {
 		paddle = new GRect (PADDLE_WIDTH, PADDLE_HEIGHT);
 		paddle.setLocation((WIDTH - paddle.getWidth()) / 2, HEIGHT - PADDLE_Y_OFFSET);
@@ -237,6 +310,9 @@ public class Breakout extends GraphicsProgram {
 		add(paddle);
 	}
 	
+	/*
+	 * Makes the ball, originally placed in the center of the window.
+	 */
 	private void makeBall() {
 		ball = new GOval (BALL_DIAMETER, BALL_DIAMETER);
 		ball.setLocation((WIDTH / 2) - BALL_RADIUS, (HEIGHT / 2) - BALL_RADIUS);
@@ -244,6 +320,10 @@ public class Breakout extends GraphicsProgram {
 		add(ball);
 	}
 	
+	/*
+	 * When the mouse is moved, the paddle follows. The cursor
+	 * is set to be in the middle of the paddle.
+	 */
 	public void mouseMoved(MouseEvent e) {
 		double x = e.getX() - (PADDLE_WIDTH / 2);
 		double y = HEIGHT - PADDLE_Y_OFFSET;
@@ -252,10 +332,14 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 	
+	/*
+	 * When the mouse is pressed, the velocity of the ball changes
+	 * by a random number generator.
+	 */
 	public void mousePressed(MouseEvent e) {
 		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
-		vy = 3.0;
+		vy = 5.0;
 	}
 
 }
