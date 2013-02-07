@@ -65,6 +65,9 @@ public class Breakout extends GraphicsProgram {
 	/* Pause time between turns */
 	private static final int TURN_PAUSE_TIME = 1000;
 	
+	/* Initial change in y to move the ball */
+	private static final int INITIAL_Y = 3;
+	
 	/* Audio file for bouncing */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
 	
@@ -348,11 +351,9 @@ public class Breakout extends GraphicsProgram {
 	public void mousePressed(MouseEvent e) {
 		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
-		if (bricksRemaining > ((NBRICK_ROWS * NBRICKS_PER_ROW) - 1)) {
-				vy = rgen.nextDouble(2.0, 3.0);
-		} else {
-			vy = rgen.nextDouble(5.0, 8.0);
-		}
+		vy = INITIAL_Y;
+		if (bricksRemaining > ((NBRICK_ROWS * NBRICKS_PER_ROW) / 2)) {
+				INITIAL_Y = INITIAL_Y * 2;
 	}
 
 }
