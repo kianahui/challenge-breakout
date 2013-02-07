@@ -84,7 +84,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private void playGame() {
 		int turnsRemaining = NTURNS;
-		while (turnsRemaining > 0 && bricksRemaining == 0) {
+		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
 			moveBall();
 			if (isBallAboveCeiling(ball)) {
