@@ -66,7 +66,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int TURN_PAUSE_TIME = 1000;
 	
 	/* Initial change in y to move the ball */
-	private static final int INITIAL_Y = 3;
+	private static int INITIAL_Y = 3;
 	
 	/* Audio file for bouncing */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
@@ -347,13 +347,17 @@ public class Breakout extends GraphicsProgram {
 	/*
 	 * When the mouse is pressed, the velocity of the ball changes
 	 * by a random number generator.
+	 * 
+	 * If there are half the number of bricks remaining, the speed
+	 * of the ball doubles.
 	 */
 	public void mousePressed(MouseEvent e) {
 		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
 		vy = INITIAL_Y;
-		if (bricksRemaining > ((NBRICK_ROWS * NBRICKS_PER_ROW) / 2)) {
+		if (bricksRemaining < ((NBRICK_ROWS * NBRICKS_PER_ROW) / 2)) {
 				INITIAL_Y = INITIAL_Y * 2;
+		}
 	}
 
 }
