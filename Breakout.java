@@ -112,9 +112,9 @@ public class Breakout extends GraphicsProgram {
 				turnsRemaining--;
 			}
 		}
-		removeAll();
+		remove(ball);
 		GLabel label = new GLabel("GAMEOVER!");
-		label.setFont("SansSerif-28");
+		label.setFont("SansSerif-20");
 		label.setColor(Color.RED);
 		double x = (getWidth() - label.getWidth()) / 2;
 		double y = (getHeight() + label.getAscent()) / 2;
