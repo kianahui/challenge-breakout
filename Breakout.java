@@ -153,9 +153,6 @@ public class Breakout extends GraphicsProgram {
 				makeBall();
 				pause(TURN_PAUSE_TIME);
 			}
-			if (bricksRemaining < 95) {
-				vy = vy * 2;
-			}
 		}
 		/*
 		 * Once the game is over, the screen is cleared,
