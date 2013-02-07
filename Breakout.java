@@ -93,16 +93,16 @@ public class Breakout extends GraphicsProgram {
 				remove(ball);
 				makeBall();
 				turnsRemaining--;
-				if(turnsRemaining == 0) {
-					removeAll();
-					GLabel label = new GLabel("GAMEOVER!");
-					label.setFont("SansSerif-28");
-					label.setColor(Color.RED);
-					double x = (getWidth() - label.getWidth()) / 2;
-					double y = (getHeight() + label.getAscent()) / 2;
-					label.setLocation(x, y);
-					add(label);
-				}
+			}
+			if(turnsRemaining == 0) {
+				removeAll();
+				GLabel label = new GLabel("GAMEOVER!");
+				label.setFont("SansSerif-28");
+				label.setColor(Color.RED);
+				double x = (getWidth() - label.getWidth()) / 2;
+				double y = (getHeight() + label.getAscent()) / 2;
+				label.setLocation(x, y);
+				add(label);
 			}
 		}
 	}
