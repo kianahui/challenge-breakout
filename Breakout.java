@@ -26,7 +26,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int HEIGHT = APPLICATION_HEIGHT;
 
 	/** Dimensions of the paddle */
-	private static final int PADDLE_WIDTH = 60;
+	private static final int PADDLE_WIDTH = WIDTH;
 	private static final int PADDLE_HEIGHT = 10;
 
 	/** Offset of the paddle up from the bottom */
@@ -70,6 +70,8 @@ public class Breakout extends GraphicsProgram {
 	
 	private GRect brick;
 	
+	private int bricksRemaining;
+	
 	private double vx, vy;
 	
 	private RandomGenerator rgen = RandomGenerator.getInstance();
@@ -84,6 +86,9 @@ public class Breakout extends GraphicsProgram {
 		int turnsRemaining = NTURNS;
 		while (turnsRemaining > 0) {
 			checkForCollisions();
+			if (bricksRemaining == 0) {
+				break;
+			}
 			moveBall();
 			if (isBallAboveCeiling(ball)) {
 				vy = -vy;
@@ -109,7 +114,7 @@ public class Breakout extends GraphicsProgram {
 
 	private void checkForCollisions() {
 		GObject collider = getCollidingObject();
-		int bricksRemaining = NBRICK_ROWS * NBRICKS_PER_ROW;
+		bricksRemaining = NBRICK_ROWS * NBRICKS_PER_ROW;
 		if (collider != null) {
 			if (collider == paddle) {
 				vy = -vy;
@@ -234,9 +239,9 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	public void mousePressed(MouseEvent e) {
-		vx = rgen.nextDouble(1.0, 3.0);
+		vx = rgen.nextDouble(10, 30);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
-		vy = 3.0;
+		vy = 30;
 	}
 
 }
