@@ -91,21 +91,12 @@ public class Breakout extends GraphicsProgram {
 		removeAll();*/
 		createGame();
 		playGame();
-		if (bricksRemaining == 0) {
-			remove(ball);
-			GLabel label = new GLabel("YOU WIN!");
-			label.setFont("SansSerif-28");
-			label.setColor(Color.BLUE);
-			double x = (getWidth() - label.getWidth()) / 2;
-			double y = (getHeight() + label.getAscent()) / 2;
-			label.setLocation(x, y);
-			add(label);
-		}
+
 	}
 	
 	private void playGame() {
 		int turnsRemaining = NTURNS;
-		while (turnsRemaining > 0) {
+		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
 			moveBall();
 			if (isBallAboveCeiling(ball)) {
@@ -123,9 +114,18 @@ public class Breakout extends GraphicsProgram {
 			}
 		}
 		remove(ball);
-		GLabel label = new GLabel("GAMEOVER!");
+		if (turnsRemaining == 0) {
+			endingGame("GAMEOVER!", Color.RED);
+		}
+		if (bricksRemaining == 0) {
+			endingGame("YOU WIN!", Color.BLUE);
+		}
+	}
+	
+	private void endingGame(String phrase, Color color) {
+		GLabel label = new GLabel(phrase);
 		label.setFont("SansSerif-20");
-		label.setColor(Color.RED);
+		label.setColor(color);
 		double x = (getWidth() - label.getWidth()) / 2;
 		double y = (getHeight() + label.getAscent()) / 2;
 		label.setLocation(x, y);
