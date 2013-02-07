@@ -107,7 +107,7 @@ public class Breakout extends GraphicsProgram {
 		add(label);
 	}
 
-	private int checkForCollisions() {
+	private void checkForCollisions() {
 		GObject collider = getCollidingObject();
 		int bricksRemaining = NBRICK_ROWS * NBRICKS_PER_ROW;
 		if (collider != null) {
@@ -128,7 +128,6 @@ public class Breakout extends GraphicsProgram {
 			label.setLocation(x, y);
 			add(label);
 		}
-		return bricksRemaining;
 	}
 	
 	private GObject getCollidingObject() {
