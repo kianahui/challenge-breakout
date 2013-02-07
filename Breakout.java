@@ -90,7 +90,6 @@ public class Breakout extends GraphicsProgram {
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 	
 	public void run() {
-		addMouseListeners();
 		GLabel label = new GLabel("PLAY BREAKOUT!");
 		label.setFont("Impact-28");
 		label.setColor(Color.RED);
@@ -100,6 +99,7 @@ public class Breakout extends GraphicsProgram {
 		add(label);
 		pause(1000);
 		removeAll();
+		addMouseListeners();
 		createGame();
 		playGame();
 
