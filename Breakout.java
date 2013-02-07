@@ -26,7 +26,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int HEIGHT = APPLICATION_HEIGHT;
 
 	/** Dimensions of the paddle */
-	private static final int PADDLE_WIDTH = 60;
+	private static final int PADDLE_WIDTH = WIDTH;
 	private static final int PADDLE_HEIGHT = 10;
 
 	/** Offset of the paddle up from the bottom */
@@ -91,6 +91,16 @@ public class Breakout extends GraphicsProgram {
 		removeAll();*/
 		createGame();
 		playGame();
+		if (bricksRemaining == 0) {
+			remove(ball);
+			GLabel label = new GLabel("YOU WIN!");
+			label.setFont("SansSerif-28");
+			label.setColor(Color.BLUE);
+			double x = (getWidth() - label.getWidth()) / 2;
+			double y = (getHeight() + label.getAscent()) / 2;
+			label.setLocation(x, y);
+			add(label);
+		}
 	}
 	
 	private void playGame() {
@@ -136,16 +146,7 @@ public class Breakout extends GraphicsProgram {
 				bricksRemaining--;
 			}
 		}
-		if (bricksRemaining == 0) {
-			remove(ball);
-			GLabel label = new GLabel("YOU WON!");
-			label.setFont("SansSerif-28");
-			label.setColor(Color.BLUE);
-			double x = (getWidth() - label.getWidth()) / 2;
-			double y = (getHeight() + label.getAscent()) / 2;
-			label.setLocation(x, y);
-			add(label);
-		}
+
 	}
 	
 	private GObject getCollidingObject() {
@@ -252,9 +253,9 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	public void mousePressed(MouseEvent e) {
-		vx = rgen.nextDouble(1.0, 3.0);
+		vx = rgen.nextDouble(10, 30);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
-		vy = 3.0;
+		vy = 30;
 	}
 
 }
