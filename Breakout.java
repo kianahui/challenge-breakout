@@ -91,6 +91,8 @@ public class Breakout extends GraphicsProgram {
 	
 	public void run() {
 		GLabel label = new GLabel("PLAY BREAKOUT!");
+		String name = toString();
+		println ("hello " + name);
 		label.setFont("Impact-28");
 		label.setColor(Color.RED);
 		double x = (getWidth() - label.getWidth()) / 2;
