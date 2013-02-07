@@ -80,6 +80,15 @@ public class Breakout extends GraphicsProgram {
 	
 	public void run() {
 		addMouseListeners();
+		GLabel label = new GLabel("TIME TO PLAY BREAKOUT!");
+		label.setFont("SansSerif-28");
+		label.setColor(Color.RED);
+		double x = (getWidth() - label.getWidth()) / 2;
+		double y = (getHeight() + label.getAscent()) / 2;
+		label.setLocation(x, y);
+		add(label);
+		pause(1000);
+		removeAll();
 		createGame();
 		playGame();
 	}
@@ -128,6 +137,7 @@ public class Breakout extends GraphicsProgram {
 			}
 		}
 		if (bricksRemaining == 0) {
+			remove(ball);
 			GLabel label = new GLabel("YOU WON!");
 			label.setFont("SansSerif-28");
 			label.setColor(Color.BLUE);
