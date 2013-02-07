@@ -90,6 +90,18 @@ public class Breakout extends GraphicsProgram {
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 	
 	public void run() {
+		openScreen();
+		addMouseListeners();
+		createGame();
+		playGame();
+
+	}
+	
+	/*
+	 * A welcome screen that displays a message and asks the user to input
+	 * their name.
+	 */
+	private void openScreen() {
 		GLabel label = new GLabel("PLAY BREAKOUT!");
 		String name = toString();
 		println ("hello " + name);
@@ -101,16 +113,8 @@ public class Breakout extends GraphicsProgram {
 		add(label);
 		pause(1000);
 		removeAll();
-		addMouseListeners();
-		createGame();
-		playGame();
-
 	}
-	
-	
-	/*
-	 * 
-	 */
+
 	private void playGame() {
 		/*
 		 * Creates a variable for the number of turns remaining,
@@ -141,15 +145,9 @@ public class Breakout extends GraphicsProgram {
 			} else if (isBallBelowGround(ball)) {
 				turnsRemaining--;
 				remove(ball);
-				GLabel label = new GLabel("Click for new ball. " + turnsRemaining + " turns left.");
-				label.setFont("SansSerif-15");
-				label.setColor(Color.MAGENTA);
-				double x = (getWidth() - label.getWidth()) / 2;
-				double y = (getHeight() + label.getAscent()) / 2;
-				label.setLocation(x, y);
-				add(label);
+				makeLabel(("Click for new ball. " + turnsRemaining + " turns left."), Color.MAGENTA);
 				waitForClick();
-				remove(label);
+			//	remove(label);
 				makeBall();
 				pause(TURN_PAUSE_TIME);
 			}
@@ -160,19 +158,19 @@ public class Breakout extends GraphicsProgram {
 		 */
 		removeAll();
 		if (turnsRemaining == 0) {
-			endingGame("GAME OVER!", Color.RED);
+			makeLabel("GAME OVER!", Color.RED);
 		}
 		if (bricksRemaining == 0) {
-			endingGame("YOU WIN!", Color.BLUE);
+			makeLabel("YOU WIN!", Color.BLUE);
 		}
 	}
 	
 	/*
-	 * A method for ending the game that makes a label.
+	 * A method that creates a label.
 	 */
-	private void endingGame(String phrase, Color color) {
+	private void makeLabel(String phrase, Color color) {
 		GLabel label = new GLabel(phrase);
-		label.setFont("SansSerif-20");
+		label.setFont("Impact-20");
 		label.setColor(color);
 		double x = (getWidth() - label.getWidth()) / 2;
 		double y = (getHeight() + label.getAscent()) / 2;
@@ -351,7 +349,7 @@ public class Breakout extends GraphicsProgram {
 	public void mousePressed(MouseEvent e) {
 		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
-		vy = 5.0;
+		vy = 3.0;
 	}
 
 }
