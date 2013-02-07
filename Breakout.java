@@ -62,7 +62,8 @@ public class Breakout extends GraphicsProgram {
 	/* Pause time for the ball */
 	private static final int PAUSE_TIME = 10;
 	
-	private static final int BALL_PAUSE_TIME = 100;
+	/* Pause time between turns */
+	private static final int TURN_PAUSE_TIME = 100;
 	
 	/* Audio file for bouncing */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
@@ -148,7 +149,7 @@ public class Breakout extends GraphicsProgram {
 				waitForClick();
 				remove(label);
 				makeBall();
-				pause(BALL_PAUSE_TIME);
+				pause(TURN_PAUSE_TIME);
 			}
 		}
 		/*
@@ -265,7 +266,7 @@ public class Breakout extends GraphicsProgram {
 	 */
 	private void moveBall() {
 		ball.move(vx, vy);
-		//pause(PAUSE_TIME);
+		pause(PAUSE_TIME);
 	}
 
 	/*
