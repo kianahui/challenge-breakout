@@ -104,7 +104,6 @@ public class Breakout extends GraphicsProgram {
 	private void checkForCollisions() {
 		GObject collider = getCollidingObject();
 		if (collider != null) {
-
 			if (collider == paddle) {
 				vy = -vy;
 			} else {
