@@ -91,6 +91,7 @@ public class Breakout extends GraphicsProgram {
 				vx = -vx;
 			} else if (isBallBelowGround(ball)) {
 				remove(ball);
+				pause(PAUSE_TIME);
 				makeBall();
 				turnsRemaining--;
 			}
