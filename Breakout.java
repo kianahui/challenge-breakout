@@ -82,7 +82,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private void playGame() {
 		int turnsRemaining = NTURNS;
-		while (true) {
+		while (turnsRemaining > 0) {
 			checkForCollisions();
 			moveBall();
 			if (isBallAboveCeiling(ball)) {
@@ -94,16 +94,16 @@ public class Breakout extends GraphicsProgram {
 				makeBall();
 				turnsRemaining--;
 			}
-			if(turnsRemaining == 0) {
-				removeAll();
-				GLabel label = new GLabel("GAMEOVER!");
-				label.setFont("SansSerif-28");
-				label.setColor(Color.RED);
-				double x = (getWidth() - label.getWidth()) / 2;
-				double y = (getHeight() + label.getAscent()) / 2;
-				label.setLocation(x, y);
-				add(label);
-			}
+			//if(turnsRemaining == 0) {	
+			//}
+			removeAll();
+			GLabel label = new GLabel("GAMEOVER!");
+			label.setFont("SansSerif-28");
+			label.setColor(Color.RED);
+			double x = (getWidth() - label.getWidth()) / 2;
+			double y = (getHeight() + label.getAscent()) / 2;
+			label.setLocation(x, y);
+			add(label);
 		}
 	}
 
