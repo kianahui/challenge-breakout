@@ -61,6 +61,8 @@ public class Breakout extends GraphicsProgram {
 	
 	private static final int PAUSE_TIME = 10;
 
+	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
+	
 	/* Method: run() */
 	/** Runs the Breakout program. */
 	
@@ -88,8 +90,10 @@ public class Breakout extends GraphicsProgram {
 			checkForCollisions();
 			moveBall();
 			if (isBallAboveCeiling(ball)) {
+				bounceClip.play();
 				vy = -vy;
 			} else if (isBallOffRight(ball) || isBallOffLeft(ball)) {
+				bounceClip.play();
 				vx = -vx;
 			} else if (isBallBelowGround(ball)) {
 				remove(ball);
@@ -114,9 +118,11 @@ public class Breakout extends GraphicsProgram {
 		bricksRemaining = NBRICK_ROWS * NBRICKS_PER_ROW;
 		if (collider != null) {
 			if (collider == paddle) {
+				bounceClip.play();
 				vy = -vy;
 			} else {
 				remove(collider);
+				bounceClip.play();
 				vy = -vy;
 				bricksRemaining--;
 			}
