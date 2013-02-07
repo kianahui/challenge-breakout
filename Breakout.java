@@ -137,7 +137,7 @@ public class Breakout extends GraphicsProgram {
 			} else if (isBallBelowGround(ball)) {
 				turnsRemaining--;
 				remove(ball);
-				GLabel label = new GLabel("Click for new ball." + turnsRemaining + " turns left.");
+				GLabel label = new GLabel("Click for new ball. " + turnsRemaining + " turns left.");
 				label.setFont("SansSerif-15");
 				label.setColor(Color.MAGENTA);
 				double x = (getWidth() - label.getWidth()) / 2;
