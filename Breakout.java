@@ -63,7 +63,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int PAUSE_TIME = 10;
 	
 	/* Pause time between turns */
-	private static final int TURN_PAUSE_TIME = 100;
+	private static final int TURN_PAUSE_TIME = 1000;
 	
 	/* Audio file for bouncing */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
@@ -152,6 +152,9 @@ public class Breakout extends GraphicsProgram {
 				remove(label);
 				makeBall();
 				pause(TURN_PAUSE_TIME);
+			}
+			if (bricksRemaining < 90) {
+				vy = vy * 2;
 			}
 		}
 		/*
@@ -352,9 +355,6 @@ public class Breakout extends GraphicsProgram {
 		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
 		vy = 5.0;
-		if (bricksRemaining < 90) {
-			vy = vy * 2;
-		}
 	}
 
 }
