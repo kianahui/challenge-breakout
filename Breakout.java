@@ -197,6 +197,9 @@ public class Breakout extends GraphicsProgram {
 				vy = -vy;
 				bricksRemaining--;
 			}
+			if (bricksRemaining < ((NBRICK_ROWS * NBRICKS_PER_ROW) / 2)) {
+				INITIAL_Y = INITIAL_Y * 2;
+			}
 		}
 
 	}
@@ -355,9 +358,6 @@ public class Breakout extends GraphicsProgram {
 		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
 		vy = INITIAL_Y;
-		if (bricksRemaining < ((NBRICK_ROWS * NBRICKS_PER_ROW) / 2)) {
-				INITIAL_Y = INITIAL_Y * 2;
 		}
-	}
 
 }
