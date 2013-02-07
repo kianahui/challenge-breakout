@@ -102,16 +102,8 @@ public class Breakout extends GraphicsProgram {
 	 * their name.
 	 */
 	private void openScreen() {
-		GLabel label = new GLabel("PLAY BREAKOUT!");
-		String name = toString();
-		println ("hello " + name);
-		label.setFont("Impact-28");
-		label.setColor(Color.RED);
-		double x = (getWidth() - label.getWidth()) / 2;
-		double y = (getHeight() + label.getAscent()) / 2;
-		label.setLocation(x, y);
-		add(label);
-		pause(1000);
+		makeLabel("Play BREAKOUT!", Color.RED);
+		pause(TURN_PAUSE_TIME);
 		removeAll();
 	}
 
@@ -145,9 +137,15 @@ public class Breakout extends GraphicsProgram {
 			} else if (isBallBelowGround(ball)) {
 				turnsRemaining--;
 				remove(ball);
-				makeLabel(("Click for new ball. " + turnsRemaining + " turns left."), Color.MAGENTA);
+				GLabel label = new GLabel("Click for new ball. " + turnsRemaining + " turns left.");
+				label.setFont("SansSerif-15");
+				label.setColor(Color.MAGENTA);
+				double x = (getWidth() - label.getWidth()) / 2;
+				double y = (getHeight() + label.getAscent()) / 2;
+				label.setLocation(x, y);
+				add(label);
 				waitForClick();
-			//	remove(label);
+				remove(label);
 				makeBall();
 				pause(TURN_PAUSE_TIME);
 			}
