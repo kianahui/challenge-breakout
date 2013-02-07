@@ -352,7 +352,7 @@ public class Breakout extends GraphicsProgram {
 		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
 		vy = 5.0;
-		if (bricksRemaining < 20) {
+		if (bricksRemaining < 50) {
 			vy = vy * 2;
 		}
 	}
