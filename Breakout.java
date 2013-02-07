@@ -134,7 +134,6 @@ public class Breakout extends GraphicsProgram {
 
 	private void checkForCollisions() {
 		GObject collider = getCollidingObject();
-		bricksRemaining = NBRICK_ROWS * NBRICKS_PER_ROW;
 		if (collider != null) {
 			if (collider == paddle) {
 				bounceClip.play();
@@ -185,6 +184,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private void createGame() {
 		buildBricks();
+		bricksRemaining = NBRICK_ROWS * NBRICKS_PER_ROW;
 		buildPaddle();	
 		makeBall();
 	}
