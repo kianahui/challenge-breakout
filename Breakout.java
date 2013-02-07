@@ -351,7 +351,7 @@ public class Breakout extends GraphicsProgram {
 		if (bricksRemaining > ((NBRICK_ROWS * NBRICKS_PER_ROW) - 1)) {
 				vy = rgen.nextDouble(2.0, 3.0);
 		} else {
-			vy = rgen.nextDouble(3.0, 5.0);
+			vy = rgen.nextDouble(5.0, 8.0);
 		}
 	}
 
