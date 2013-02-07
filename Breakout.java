@@ -81,6 +81,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void playGame() {
+		int turnsRemaining = NTURNS;
 		while (true) {
 			checkForCollisions();
 			moveBall();
@@ -89,27 +90,43 @@ public class Breakout extends GraphicsProgram {
 			} else if (isBallOffRight(ball) || isBallOffLeft(ball)) {
 				vx = -vx;
 			} else if (isBallBelowGround(ball)) {
-				removeAll();
-				GLabel label = new GLabel("GAMEOVER!");
-				label.setFont("SansSerif-28");
-				label.setColor(Color.RED);
-				double x = (getWidth() - label.getWidth()) / 2;
-				double y = (getHeight() + label.getAscent()) / 2;
-				label.setLocation(x, y);
-				add(label);
+				remove(ball);
+				makeBall();
+				turnsRemaining--;
+				if(turnsRemaining == 0) {
+					removeAll();
+					GLabel label = new GLabel("GAMEOVER!");
+					label.setFont("SansSerif-28");
+					label.setColor(Color.RED);
+					double x = (getWidth() - label.getWidth()) / 2;
+					double y = (getHeight() + label.getAscent()) / 2;
+					label.setLocation(x, y);
+					add(label);
+				}
 			}
 		}
 	}
 
 	private void checkForCollisions() {
 		GObject collider = getCollidingObject();
+		int bricksRemaining = NBRICK_ROWS * NBRICKS_PER_ROW;
 		if (collider != null) {
 			if (collider == paddle) {
 				vy = -vy;
 			} else {
 				remove(collider);
 				vy = -vy;
+				bricksRemaining--;
 			}
+		}
+		if (bricksRemaining == 0) {
+			GLabel label = new GLabel("YOU WON!");
+			label.setFont("SansSerif-28");
+			label.setColor(Color.BLUE);
+			double x = (getWidth() - label.getWidth()) / 2;
+			double y = (getHeight() + label.getAscent()) / 2;
+			label.setLocation(x, y);
+			add(label);
 		}
 	}
 	
