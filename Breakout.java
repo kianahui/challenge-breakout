@@ -122,7 +122,8 @@ public class Breakout extends GraphicsProgram {
 		 * If the ball hits the window frame, it reverses direction.
 		 * If the ball hits the ground, it is removed, and the user
 		 * must click to make a new ball appear that will pause until it
-		 * moves again. The number of turns remaining is subtracted by 1
+		 * moves again. A message is displayed with the number of turns
+		 * remaining. The number of turns remaining is subtracted by 1
 		 * every time the ball hits the ground.
 		 */
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
@@ -347,7 +348,11 @@ public class Breakout extends GraphicsProgram {
 	public void mousePressed(MouseEvent e) {
 		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
-		vy = 3.0;
+		if (bricksRemaining > ((NBRICK_ROWS * NBRICKS_PER_ROW) / 2) {
+				vy = rgen.nextDouble(2.0, 3.0);
+		} else {
+			vy = rgen.nextDouble(3.0, 5.0);
+		}
 	}
 
 }
