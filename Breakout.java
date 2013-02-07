@@ -94,9 +94,6 @@ public class Breakout extends GraphicsProgram {
 				makeBall();
 				turnsRemaining--;
 			}
-			//if(turnsRemaining == 0) {	
-			//}
-			
 		}
 		removeAll();
 		GLabel label = new GLabel("GAMEOVER!");
