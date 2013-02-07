@@ -135,11 +135,18 @@ public class Breakout extends GraphicsProgram {
 				bounceClip.play();
 				vx = -vx;
 			} else if (isBallBelowGround(ball)) {
+				turnsRemaining--;
 				remove(ball);
 				waitForClick();
+				GLabel label = new GLabel("Click for new ball." + turnsRemaining + " turns left.");
+				label.setFont("SansSerif-15");
+				label.setColor(Color.MAGENTA);
+				double x = (getWidth() - label.getWidth()) / 2;
+				double y = (getHeight() + label.getAscent()) / 2;
+				label.setLocation(x, y);
+				add(label);
 				makeBall();
 				pause(BALL_PAUSE_TIME);
-				turnsRemaining--;
 			}
 		}
 		/*
