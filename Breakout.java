@@ -26,7 +26,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int HEIGHT = APPLICATION_HEIGHT;
 
 	/** Dimensions of the paddle */
-	private static final int PADDLE_WIDTH = WIDTH;
+	private static final int PADDLE_WIDTH = 60;
 	private static final int PADDLE_HEIGHT = 10;
 
 	/** Offset of the paddle up from the bottom */
@@ -82,7 +82,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private void playGame() {
 		int turnsRemaining = NTURNS;
-		while (turnsRemaining > 0 && checkForCollisions() > 0) {
+		while (turnsRemaining > 0) {
 			checkForCollisions();
 			moveBall();
 			if (isBallAboveCeiling(ball)) {
@@ -235,9 +235,9 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	public void mousePressed(MouseEvent e) {
-		vx = rgen.nextDouble(10.0, 30.0);
+		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
-		vy = 30.0;
+		vy = 3.0;
 	}
 
 }
