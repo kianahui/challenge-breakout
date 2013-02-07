@@ -82,7 +82,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private void playGame() {
 		int turnsRemaining = NTURNS;
-		while (turnsRemaining > 0) {
+		while (turnsRemaining > 0 && checkForCollisions() > 0) {
 			checkForCollisions();
 			moveBall();
 			if (isBallAboveCeiling(ball)) {
@@ -107,7 +107,7 @@ public class Breakout extends GraphicsProgram {
 		add(label);
 	}
 
-	private void checkForCollisions() {
+	private int checkForCollisions() {
 		GObject collider = getCollidingObject();
 		int bricksRemaining = NBRICK_ROWS * NBRICKS_PER_ROW;
 		if (collider != null) {
@@ -128,6 +128,7 @@ public class Breakout extends GraphicsProgram {
 			label.setLocation(x, y);
 			add(label);
 		}
+		return bricksRemaining;
 	}
 	
 	private GObject getCollidingObject() {
@@ -234,9 +235,9 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	public void mousePressed(MouseEvent e) {
-		vx = rgen.nextDouble(1.0, 3.0);
+		vx = rgen.nextDouble(10.0, 30.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
-		vy = 3.0;
+		vy = 30.0;
 	}
 
 }
