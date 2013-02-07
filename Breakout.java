@@ -348,7 +348,7 @@ public class Breakout extends GraphicsProgram {
 	public void mousePressed(MouseEvent e) {
 		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
-		if (bricksRemaining > ((NBRICK_ROWS * NBRICKS_PER_ROW) / 2)) {
+		if (bricksRemaining > ((NBRICK_ROWS * NBRICKS_PER_ROW) - 1)) {
 				vy = rgen.nextDouble(2.0, 3.0);
 		} else {
 			vy = rgen.nextDouble(3.0, 5.0);
