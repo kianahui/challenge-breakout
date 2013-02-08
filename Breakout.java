@@ -149,6 +149,7 @@ public class Breakout extends GraphicsProgram {
 		waitForClick();
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
+			keepScore();
 			moveBall();
 			if (isBallAboveCeiling(ball)) {
 				bounceClip.play();
@@ -247,7 +248,6 @@ public class Breakout extends GraphicsProgram {
 				bricksRemaining--;
 			}
 		}
-		keepScore();
 	}
 	
 	/*
