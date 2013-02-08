@@ -170,14 +170,20 @@ public class Breakout extends GraphicsProgram {
 				turnsRemaining--;
 				remove(ball);
 				if (turnsRemaining == 2) {
-					displayTurns("Click for new ball. " + turnsRemaining + " turns left.");
+					waitBetweenTurns("Click for new ball. " + turnsRemaining + " turns left.");
 				}
 				if (turnsRemaining == 1) {
-					displayTurns("Click for new ball. You're on your last life...");
+					waitBetweenTurns("Click for new ball. You're on your last life...");
 					oneTurnLeftClip.play();
 				}
 			}
 			remove(points);
+			/*
+			 * If the user makes it past half the total number of bricks,
+			 * the speed of the ball doubles.
+			 */
+			if (bricksRemaining < (TOTAL_BRICKS / 2)) {
+				vy = INITIAL_Y * 2;
 		}
 		/*
 		 * Once the game is over, the screen is cleared,
@@ -213,7 +219,7 @@ public class Breakout extends GraphicsProgram {
 	 * A method that creates a label to display the number of turns
 	 * left between turns as well as make a new ball.
 	 */
-	private void displayTurns(String phrase) {
+	private void waitBetweenTurns(String phrase) {
 		GLabel label = new GLabel(phrase);
 		label.setFont("SansSerif-15");
 		label.setColor(Color.MAGENTA);
