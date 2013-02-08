@@ -84,6 +84,8 @@ public class Breakout extends GraphicsProgram {
 	/* Instance variable to make the brick accessible */
 	private GRect brick;
 	
+	private JButton startButton;
+	
 	/* Instance variable to count the bricks remaining */
 	private int bricksRemaining;
 	
@@ -111,21 +113,21 @@ public class Breakout extends GraphicsProgram {
 		name = readLine("Please Enter your name: ");
 		println("Hello " + name);*/
 		init();
-		waitForClick();
-		pause(TURN_PAUSE_TIME);
-		removeAll();
+	//	waitForClick();
+	//	pause(TURN_PAUSE_TIME);
+	//	removeAll();
 	}
 
 	public void init() {
-		JButton startButton = new JButton ("Pause");
+		startButton = new JButton ("Pause");
 		add(startButton, SOUTH);
 		addActionListeners();
-		startButton.setVisible(false);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Start")) {
-			pause(3000);
+			pause(TURN_PAUSE_TIME);
+			removeAll();
 		}
 	}
 	
