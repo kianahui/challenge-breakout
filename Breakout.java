@@ -219,7 +219,7 @@ public class Breakout extends GraphicsProgram {
 			label.setFont("Arial-BOLD-15");
 			label.setColor(Color.ORANGE);
 			double x = (getWidth() - label.getWidth()) / 2;
-			double y = (getHeight() - label.getWidth()) / 2;
+			double y = getHeight()  / 2;
 			label.setLocation(x, y);
 			add(label);
 			gameLostClip.play();
