@@ -107,10 +107,11 @@ public class Breakout extends GraphicsProgram {
 	 */
 	private void openScreen() {
 		//init();
+		remove(startButton);
 		makeLabel("Play BREAKOUT!", Color.RED);
-		/*String name = readLine("Please Enter your name: ");
-		name.set  = (30, 40);
-		println("Hello " + name);*/
+		String name = new GLabel ();
+		name = readLine("Please Enter your name: ");
+		println("Hello " + name);
 		waitForClick();
 		pause(TURN_PAUSE_TIME);
 		removeAll();
@@ -160,15 +161,28 @@ public class Breakout extends GraphicsProgram {
 			} else if (isBallBelowGround(ball)) {
 				turnsRemaining--;
 				remove(ball);
-				GLabel label = new GLabel("Click for new ball. " + turnsRemaining + " turns left.");
-				label.setFont("SansSerif-15");
-				label.setColor(Color.MAGENTA);
-				double x = (getWidth() - label.getWidth()) / 2;
-				double y = (getHeight() + label.getAscent()) / 2;
-				label.setLocation(x, y);
-				add(label);
-				waitForClick();
-				remove(label);
+				if (turnsRemaining == 2) {
+					GLabel label = new GLabel("Click for new ball. " + turnsRemaining + " turns left.");
+					label.setFont("SansSerif-15");
+					label.setColor(Color.MAGENTA);
+					double x = (getWidth() - label.getWidth()) / 2;
+					double y = (getHeight() + label.getAscent()) / 2;
+					label.setLocation(x, y);
+					add(label);
+					waitForClick();
+					remove(label);
+				}
+				if (turnsRemaining == 1) {
+					GLabel label = new GLabel("Click for new ball. " + turnsRemaining + " turn left.");
+					label.setFont("SansSerif-15");
+					label.setColor(Color.MAGENTA);
+					double x = (getWidth() - label.getWidth()) / 2;
+					double y = (getHeight() + label.getAscent()) / 2;
+					label.setLocation(x, y);
+					add(label);
+					waitForClick();
+					remove(label);
+				}
 				makeBall();
 				pause(TURN_PAUSE_TIME);
 			}
