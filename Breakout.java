@@ -122,7 +122,7 @@ public class Breakout extends GraphicsProgram {
 	 * upon clicking.
 	 */
 	private void openScreen() {
-		makeLabel("Let's play BREAKOUT! Click to play.", Color.RED, "Braggadocio-15");
+		makeLabel("Let's play BREAKOUT! Click to play.", Color.BLUE, "Braggadocio-15");
 		waitForClick();
 		removeAll();
 	}
@@ -216,24 +216,32 @@ public class Breakout extends GraphicsProgram {
 		removeAll();
 		if (turnsRemaining == 0) {
 			oneTurnLeftClip.stop();
-			makeLabel("GAME OVER!", Color.RED, "Impact-20");
-			setBackground(Color.BLACK);
-			GLabel label = new GLabel("You had to destroy " + bricksRemaining + " more bricks!");
-			label.setFont("Arial-BOLD-15");
-			label.setColor(Color.ORANGE);
-			label.setLocation((getWidth() - label.getWidth()) / 2, (getHeight()  / 2) + Y_OFFSET);
-			add(label);
-			GLabel meanlabel = new GLabel("But you didn't.");
-			meanlabel.setFont("Britannic Bold-15");
-			meanlabel.setColor(Color.CYAN);
-			meanlabel.setLocation((getWidth() - meanlabel.getWidth()) / 2, getHeight() - meanlabel.getHeight());
-			add(meanlabel);
+			createLosingText();
 			gameLostClip.play();
 		}
 		if (bricksRemaining == 0) {
 			makeLabel("YOU WIN!", Color.BLUE, "Impact-30");
 			gameWonClip.play();
 		}
+	}
+	
+	
+	/*
+	 * Creates labels to be shown on the page once the user has lost.
+	 */
+	private void createLosingText() {
+		makeLabel("GAME OVER!", Color.RED, "Impact-20");
+		setBackground(Color.BLACK);
+		GLabel label = new GLabel("You had to destroy " + bricksRemaining + " more bricks!");
+		label.setFont("Arial-BOLD-15");
+		label.setColor(Color.ORANGE);
+		label.setLocation((getWidth() - label.getWidth()) / 2, (getHeight()  / 2) + Y_OFFSET);
+		add(label);
+		GLabel meanlabel = new GLabel("But you didn't.");
+		meanlabel.setFont("Britannic Bold-15");
+		meanlabel.setColor(Color.CYAN);
+		meanlabel.setLocation((getWidth() - meanlabel.getWidth()) / 2, getHeight() - meanlabel.getHeight());
+		add(meanlabel);
 	}
 	
 	/*
