@@ -189,6 +189,7 @@ public class Breakout extends GraphicsProgram {
 				vy = INITIAL_Y * 2;
 			}
 		}
+		
 		/*
 		 * Once the game is over, the screen is cleared,
 		 * and text is displayed showing if the user won or lost. An audio
