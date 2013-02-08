@@ -125,8 +125,8 @@ public class Breakout extends GraphicsProgram {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Start")) {
 			pause(TURN_PAUSE_TIME);
-			removeAll();
 		}
+		removeAll();
 	}
 	
 	private void playGame() {
