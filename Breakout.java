@@ -224,9 +224,9 @@ public class Breakout extends GraphicsProgram {
 			label.setLocation((getWidth() - label.getWidth()) / 2, (getHeight()  / 2) + Y_OFFSET);
 			add(label);
 			GLabel meanlabel = new GLabel("But you didn't.");
-			label.setFont("Britannic Bold-15");
-			label.setColor(Color.CYAN);
-			label.setLocation((getWidth() - label.getWidth()) / 2, getHeight() - label.getHeight());
+			meanlabel.setFont("Britannic Bold-15");
+			meanlabel.setColor(Color.CYAN);
+			meanlabel.setLocation((getWidth() - label.getWidth()) / 2, getHeight() - label.getHeight());
 			add(meanlabel);
 			gameLostClip.play();
 		}
