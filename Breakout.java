@@ -171,6 +171,7 @@ public class Breakout extends GraphicsProgram {
 				remove(ball);
 				if (turnsRemaining == 2) {
 					waitBetweenTurns("Click for new ball. " + turnsRemaining + " turns left.");
+					
 				}
 				if (turnsRemaining == 1) {
 					waitBetweenTurns("Click for new ball. You're on your last life...");
