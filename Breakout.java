@@ -10,7 +10,6 @@
 import acm.graphics.*;
 import acm.program.*;
 import acm.util.*;
-import acmx.export.javax.swing.JButton;
 
 import java.applet.*;
 import java.awt.*;
@@ -84,8 +83,6 @@ public class Breakout extends GraphicsProgram {
 	/* Instance variable to make the brick accessible */
 	private GRect brick;
 	
-	private JButton startButton;
-	
 	/* Instance variable to count the bricks remaining */
 	private int bricksRemaining;
 	
@@ -151,30 +148,10 @@ public class Breakout extends GraphicsProgram {
 				turnsRemaining--;
 				remove(ball);
 				if (turnsRemaining == 2) {
-					GLabel label = new GLabel("Click for new ball. " + turnsRemaining + " turns left.");
-					label.setFont("SansSerif-15");
-					label.setColor(Color.MAGENTA);
-					double x = (getWidth() - label.getWidth()) / 2;
-					double y = (getHeight() + label.getAscent()) / 2;
-					label.setLocation(x, y);
-					add(label);
-					waitForClick();
-					remove(label);
-					makeBall();
-					pause(TURN_PAUSE_TIME);
+					displayTurns("Click for new ball. " + turnsRemaining + " turns left.");
 				}
 				if (turnsRemaining == 1) {
-					GLabel label = new GLabel("Click for new ball. " + turnsRemaining + " turn left.");
-					label.setFont("SansSerif-15");
-					label.setColor(Color.MAGENTA);
-					double x = (getWidth() - label.getWidth()) / 2;
-					double y = (getHeight() + label.getAscent()) / 2;
-					label.setLocation(x, y);
-					add(label);
-					waitForClick();
-					remove(label);
-					makeBall();
-					pause(TURN_PAUSE_TIME);
+					displayTurns("Click for new ball. " + turnsRemaining + " turn left.");
 				}
 			}
 		}
@@ -202,6 +179,24 @@ public class Breakout extends GraphicsProgram {
 		double y = (getHeight() + label.getAscent()) / 2;
 		label.setLocation(x, y);
 		add(label);
+	}
+	
+	/*
+	 * A method that creates a label to display the number of turns
+	 * left between turns as well as make a new ball.
+	 */
+	private void displayTurns(String phrase) {
+		GLabel label = new GLabel(phrase);
+		label.setFont("SansSerif-15");
+		label.setColor(Color.MAGENTA);
+		double x = (getWidth() - label.getWidth()) / 2;
+		double y = (getHeight() + label.getAscent()) / 2;
+		label.setLocation(x, y);
+		add(label);
+		waitForClick();
+		remove(label);
+		makeBall();
+		pause(TURN_PAUSE_TIME);
 	}
 
 	/*
