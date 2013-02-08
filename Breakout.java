@@ -112,8 +112,8 @@ public class Breakout extends GraphicsProgram {
 		name.set  = (30, 40);
 		println("Hello " + name);*/
 		waitForClick();
-		/*pause(TURN_PAUSE_TIME);
-		removeAll();*/
+		pause(TURN_PAUSE_TIME);
+		removeAll();
 	}
 
 	public void init() {
