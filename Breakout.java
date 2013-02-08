@@ -108,28 +108,16 @@ public class Breakout extends GraphicsProgram {
 	 * their name.
 	 */
 	private void openScreen() {
-		makeLabel("Let's play BREAKOUT!", Color.RED);
+		makeLabel("Let's play BREAKOUT! Click to play.", Color.RED);
 		/*String name = new GLabel ();
 		name = readLine("Please Enter your name: ");
 		println("Hello " + name);*/
-		init();
-	//	waitForClick();
-	//	pause(TURN_PAUSE_TIME);
-	//	removeAll();
+		waitForClick();
+		pause(TURN_PAUSE_TIME);
+		removeAll();
 	}
 
-	public void init() {
-		startButton = new JButton ("Pause");
-		add(startButton, SOUTH);
-		addActionListeners();
-	}
-	
-	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("Start")) {
-			pause(TURN_PAUSE_TIME);
-			removeAll();
-		}
-	}
+
 	
 	private void playGame() {
 		/*
@@ -296,7 +284,6 @@ public class Breakout extends GraphicsProgram {
 	 * of bricks remaining to the total bricks present.
 	 */
 	private void createGame() {
-		startButton.setVisible(false);
 		buildBricks();
 		bricksRemaining = NBRICK_ROWS * NBRICKS_PER_ROW;
 		buildPaddle();	
