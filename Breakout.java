@@ -69,7 +69,13 @@ public class Breakout extends GraphicsProgram {
 	private static final int TURN_PAUSE_TIME = 1000;
 	
 	/* Initial change in y to move the ball */
-	private static int INITIAL_Y = 10;
+	private static int INITIAL_Y = 5;
+	
+	/* 
+	 * Constant for change in y to move the ball, to be initiated
+	 * once half the bricks are gone
+	 */
+	private static int SECOND_Y = 10;
 	
 	/* Audio file for bouncing */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
@@ -182,11 +188,11 @@ public class Breakout extends GraphicsProgram {
 			remove(points);
 			/*
 			 * If the user makes it past half the total number of bricks,
-			 * the speed of the ball doubles.
+			 * the speed of the ball increases.
 			 */
-		/*	if (bricksRemaining < (TOTAL_BRICKS / 2)) {
-				vy = INITIAL_Y * 2;
-			}*/
+			if (bricksRemaining < (TOTAL_BRICKS / 2)) {
+				vy = SECOND_Y;
+			}
 		}
 		/*
 		 * Once the game is over, the screen is cleared,
