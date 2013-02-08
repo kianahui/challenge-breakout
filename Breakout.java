@@ -4,7 +4,7 @@
  * Name: Kiana Hui
  * Section Leader: Arthur Brant
  * 
- * This file will eventually implement the game of Breakout.
+ * This file runs an amazing version of the game of Breakout.
  */
 
 import acm.graphics.*;
@@ -14,7 +14,6 @@ import acm.util.*;
 import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Random;
 
 public class Breakout extends GraphicsProgram {
 
@@ -255,7 +254,7 @@ public class Breakout extends GraphicsProgram {
 				bricksRemaining--;
 			}
 			//if (bricksRemaining < 49) {
-				ball.setColor(color);
+				ball.setColor(rgen.nextColor());
 			//}
 		}
 	}
