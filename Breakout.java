@@ -69,7 +69,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int TURN_PAUSE_TIME = 1000;
 	
 	/* Initial change in y to move the ball */
-	private static int INITIAL_Y = 5;
+	private static int INITIAL_Y = 7;
 	
 	/* Audio file for bouncing */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
@@ -131,6 +131,12 @@ public class Breakout extends GraphicsProgram {
 		 */
 		int turnsRemaining = NTURNS;
 		/*
+		 * Sets the velocity for the ball and waits for the user to click
+		 * to continue.
+		 */
+		getVelocity();
+		waitForClick();
+		/*
 		 * A while loop that continues while the number
 		 * of turns remaining is greater than 0 and the number
 		 * of bricks remaining is greater than 0.
@@ -149,8 +155,6 @@ public class Breakout extends GraphicsProgram {
 		 * points. One brick is equal to one point. The points are rewritten with
 		 * every succession of the while loop.
 		 */
-		getVelocity();
-		waitForClick();
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
 			int pointTotal = TOTAL_BRICKS - bricksRemaining;
@@ -172,10 +176,10 @@ public class Breakout extends GraphicsProgram {
 				if (turnsRemaining == 2) {
 					waitBetweenTurns("Click for new ball. " + turnsRemaining + " turns left.");
 				}
-				if (turnsRemaining == 1) {
+			/*	if (turnsRemaining == 1) {
 					waitBetweenTurns("Click for new ball. You're on your last life...");
 					oneTurnLeftClip.play();
-				}
+				}*/
 			}
 			remove(points);
 			/*
