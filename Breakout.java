@@ -69,7 +69,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int TURN_PAUSE_TIME = 1000;
 	
 	/* Initial change in y to move the ball */
-	private static int INITIAL_Y = 3;
+	private static int INITIAL_Y = 5;
 	
 	/* Audio file for bouncing */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
@@ -101,6 +101,7 @@ public class Breakout extends GraphicsProgram {
 	/* Instance variable to keep track of the velocity of the ball */
 	private double vx, vy;
 	
+	/* Instance variable to keep track of the point total */
 	private int pointTotal;
 	
 	/* Instance variable to generate random numbers */
