@@ -213,7 +213,7 @@ public class Breakout extends GraphicsProgram {
 			} else {
 				remove(collider);
 				bounceClip.play();
-				vy = -vy;
+				vy = -Math.abs(vy);
 				bricksRemaining--;
 			}
 			/*if (bricksRemaining < ((NBRICK_ROWS * NBRICKS_PER_ROW) / 2)) {
