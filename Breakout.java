@@ -149,7 +149,8 @@ public class Breakout extends GraphicsProgram {
 		 * points. One brick is equal to one point. The points are rewritten with
 		 * every succession of the while loop.
 		 */
-
+		getVelocity();
+		waitForClick();
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
 			int pointTotal = TOTAL_BRICKS - bricksRemaining;
