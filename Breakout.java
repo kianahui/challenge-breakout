@@ -180,7 +180,9 @@ public class Breakout extends GraphicsProgram {
 				if (turnsRemaining == 1) {
 					waitBetweenTurns("Click for new ball. You're on your last life...");
 					oneTurnLeftClip.play();
-					
+					paddle.setColor(Color.GRAY);
+					setBackground(Color.WHITE);
+					ball.setColor(Color.GRAY);
 				}
 			}
 			remove(points);
