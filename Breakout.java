@@ -92,6 +92,8 @@ public class Breakout extends GraphicsProgram {
 	/* Instance variable to make the ball accessible */
 	private GOval ball;
 	
+	private GOval ball2;
+	
 	/* Instance variable to make the brick accessible */
 	private GRect brick;
 	
@@ -100,9 +102,6 @@ public class Breakout extends GraphicsProgram {
 	
 	/* Instance variable to keep track of the velocity of the ball */
 	private double vx, vy;
-	
-	/* Instance variable to keep track of the point total */
-	private int pointTotal;
 	
 	/* Instance variable to generate random numbers */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
@@ -131,6 +130,8 @@ public class Breakout extends GraphicsProgram {
 		 * set at the total number of turns here.
 		 */
 		int turnsRemaining = NTURNS;
+		getVelocity();
+		waitForClick();
 		/*
 		 * A while loop that continues while the number
 		 * of turns remaining is greater than 0 and the number
@@ -146,12 +147,13 @@ public class Breakout extends GraphicsProgram {
 		 * 
 		 * When there is one turn left, an audio file also plays.
 		 * 
+		 * Points are kept track of by setting a variable to equal the total
+		 * points. One brick is equal to one point. The points are rewritten with
+		 * every succession of the while loop.
 		 */
-		getVelocity();
-		waitForClick();
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
-			pointTotal = TOTAL_BRICKS - bricksRemaining;
+			int pointTotal = TOTAL_BRICKS - bricksRemaining;
 			GLabel points = new GLabel ("Your current points: " + pointTotal);
 			points.setLocation(WIDTH - points.getWidth(), HEIGHT - points.getHeight());
 			points.setFont("Arial-10");
@@ -168,10 +170,10 @@ public class Breakout extends GraphicsProgram {
 				turnsRemaining--;
 				remove(ball);
 				if (turnsRemaining == 2) {
-					displayTurns("Click for new ball. " + turnsRemaining + " turns left.");
+					waitBetweenTurns("Click for new ball. " + turnsRemaining + " turns left.");
 				}
 				if (turnsRemaining == 1) {
-					displayTurns("Click for new ball. You're on your last life...");
+					waitBetweenTurns("Click for new ball. You're on your last life...");
 					oneTurnLeftClip.play();
 				}
 			}
@@ -211,7 +213,7 @@ public class Breakout extends GraphicsProgram {
 	 * A method that creates a label to display the number of turns
 	 * left between turns as well as make a new ball.
 	 */
-	private void displayTurns(String phrase) {
+	private void waitBetweenTurns(String phrase) {
 		GLabel label = new GLabel(phrase);
 		label.setFont("SansSerif-15");
 		label.setColor(Color.MAGENTA);
@@ -219,10 +221,6 @@ public class Breakout extends GraphicsProgram {
 		double y = (getHeight() + label.getAscent()) / 2;
 		label.setLocation(x, y);
 		add(label);
-		waitForClick();
-		remove(label);
-		makeBall();
-		pause(TURN_PAUSE_TIME);
 	}
 	
 	/*
