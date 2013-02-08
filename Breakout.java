@@ -214,11 +214,12 @@ public class Breakout extends GraphicsProgram {
 		if (turnsRemaining == 0) {
 			oneTurnLeftClip.stop();
 			makeLabel("GAME OVER!", Color.RED);
+			setBackground(Color.BLACK);
 			GLabel label = new GLabel("You had to destroy " + bricksRemaining + "more bricks!");
-			label.setFont("Arial-15");
+			label.setFont("Arial-BOLD-15");
 			label.setColor(Color.ORANGE);
-			double x = getWidth() / 2;
-			double y = getHeight() / 2;
+			double x = (getWidth() + label.getWidth()) / 2;
+			double y = ((getHeight() + label.getWidth()) / 2) + 30;
 			label.setLocation(x, y);
 			add(label);
 			gameLostClip.play();
