@@ -70,7 +70,10 @@ public class Breakout extends GraphicsProgram {
 	private static final int TURN_PAUSE_TIME = 1000;
 	
 	/* Initial change in y to move the ball */
-	private static int INITIAL_Y = 5;
+	private static final int INITIAL_Y = 5;
+	
+	/* A value to place text on the losing screen */
+	private static final int Y_OFFSET = 25;
 	
 	/* Audio file for bouncing */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
@@ -219,7 +222,7 @@ public class Breakout extends GraphicsProgram {
 			label.setFont("Arial-BOLD-15");
 			label.setColor(Color.ORANGE);
 			double x = (getWidth() - label.getWidth()) / 2;
-			double y = (getHeight()  / 2) + 20;
+			double y = (getHeight()  / 2) + Y_OFFSET;
 			label.setLocation(x, y);
 			add(label);
 			gameLostClip.play();
