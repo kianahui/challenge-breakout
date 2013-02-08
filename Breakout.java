@@ -37,6 +37,9 @@ public class Breakout extends GraphicsProgram {
 
 	/** Number of rows of bricks */
 	private static final int NBRICK_ROWS = 10;
+	
+	/** Number of total bricks */
+	private static final int TOTAL_BRICKS = NBRICKS_PER_ROW * NBRICK_ROWS;
 
 	/** Separation between bricks */
 	private static final int BRICK_SEP = 4;
@@ -98,6 +101,8 @@ public class Breakout extends GraphicsProgram {
 	/* Instance variable to keep track of the velocity of the ball */
 	private double vx, vy;
 	
+	private int pointTotal;
+	
 	/* Instance variable to generate random numbers */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 	
@@ -106,7 +111,6 @@ public class Breakout extends GraphicsProgram {
 		addMouseListeners();
 		createGame();
 		playGame();
-
 	}
 	
 	/*
@@ -213,6 +217,16 @@ public class Breakout extends GraphicsProgram {
 		pause(TURN_PAUSE_TIME);
 	}
 
+	private void keepScore() {
+		pointTotal = TOTAL_BRICKS - bricksRemaining;
+		createCounter();
+	}
+	
+	private void createCounter() {
+		GLabel points = new GLabel ("Your current points: " + pointTotal);
+		points.setLocation(0, 0);
+	}
+	
 	/*
 	 * A method that checks for collisions by setting an object
 	 * to something that has collided. The ball bounces off the
@@ -231,7 +245,6 @@ public class Breakout extends GraphicsProgram {
 				bricksRemaining--;
 			}
 		}
-
 	}
 	
 	/*
@@ -291,7 +304,7 @@ public class Breakout extends GraphicsProgram {
 	 */
 	private void createGame() {
 		buildBricks();
-		bricksRemaining = NBRICK_ROWS * NBRICKS_PER_ROW;
+		bricksRemaining = TOTAL_BRICKS;
 		buildPaddle();	
 		makeBall();
 	}
@@ -380,7 +393,6 @@ public class Breakout extends GraphicsProgram {
 	/*
 	 * Sets the velocity of the ball.
 	 */
-	
 	private void getVelocity () {
 		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
