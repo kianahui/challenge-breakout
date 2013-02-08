@@ -168,6 +168,7 @@ public class Breakout extends GraphicsProgram {
 					oneTurnLeftClip.play();
 				}
 			}
+			createCounter();
 		}
 		/*
 		 * Once the game is over, the screen is cleared,
