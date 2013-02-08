@@ -116,7 +116,7 @@ public class Breakout extends GraphicsProgram {
 		removeAll();*/
 	}
 
-	/*public void init() {
+	public void init() {
 		JButton startButton = new JButton ("Start");
 		add(startButton, SOUTH);
 		addActionListeners();
@@ -127,7 +127,7 @@ public class Breakout extends GraphicsProgram {
 			pause(TURN_PAUSE_TIME);
 		}
 		removeAll();
-	}*/
+	}
 	
 	private void playGame() {
 		/*
