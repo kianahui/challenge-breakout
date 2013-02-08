@@ -122,7 +122,7 @@ public class Breakout extends GraphicsProgram {
 		add(startButton, SOUTH);
 		addActionListeners();
 		pause(3000);
-		remove(startButton);
+		remove(JButton);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
