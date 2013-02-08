@@ -151,7 +151,7 @@ public class Breakout extends GraphicsProgram {
 					displayTurns("Click for new ball. " + turnsRemaining + " turns left.");
 				}
 				if (turnsRemaining == 1) {
-					displayTurns("Click for new ball. " + turnsRemaining + " turn left!! LAST LIFE.");
+					displayTurns("Click for new ball. You're on your last life...");
 				}
 			}
 		}
