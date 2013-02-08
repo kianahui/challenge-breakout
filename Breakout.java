@@ -184,6 +184,7 @@ public class Breakout extends GraphicsProgram {
 			 */
 			if (bricksRemaining < (TOTAL_BRICKS / 2)) {
 				vy = INITIAL_Y * 2;
+			}
 		}
 		/*
 		 * Once the game is over, the screen is cleared,
