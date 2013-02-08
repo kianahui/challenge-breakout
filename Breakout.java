@@ -174,7 +174,7 @@ public class Breakout extends GraphicsProgram {
 					oneTurnLeftClip.play();
 				}
 			}
-			remove(points);
+			//remove(points);
 		}
 		/*
 		 * Once the game is over, the screen is cleared,
