@@ -221,10 +221,13 @@ public class Breakout extends GraphicsProgram {
 			GLabel label = new GLabel("You had to destroy " + bricksRemaining + " more bricks!");
 			label.setFont("Arial-BOLD-15");
 			label.setColor(Color.ORANGE);
-			double x = (getWidth() - label.getWidth()) / 2;
-			double y = (getHeight()  / 2) + Y_OFFSET;
-			label.setLocation(x, y);
+			label.setLocation((getWidth() - label.getWidth()) / 2, (getHeight()  / 2) + Y_OFFSET);
 			add(label);
+			GLabel meanlabel = new GLabel("But you didn't.");
+			label.setFont("Britannic Bold-15");
+			label.setColor(Color.CYAN);
+			label.setLocation((getWidth() - label.getWidth()) / 2, getHeight() - label.getHeight());
+			add(meanlabel);
 			gameLostClip.play();
 		}
 		if (bricksRemaining == 0) {
