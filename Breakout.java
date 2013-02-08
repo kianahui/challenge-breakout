@@ -174,6 +174,15 @@ public class Breakout extends GraphicsProgram {
 				remove(ball);
 				if (turnsRemaining == 2) {
 					waitBetweenTurns("Click for new ball. " + turnsRemaining + " turns left.");
+					GLabel label = new GLabel("NIGHT MODE");
+					label.setFont("Arial-20");
+					label.setColor(Color.CYAN);
+					double x = (getWidth() - label.getWidth()) / 2;
+					double y = getHeight()/ 2;
+					label.setLocation(x, y);
+					add(label);
+					pause(PAUSE_TIME);
+					remove(label);
 					paddle.setColor(Color.WHITE);
 					setBackground(Color.BLACK);
 					ball.setColor(Color.WHITE);
