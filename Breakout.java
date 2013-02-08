@@ -119,7 +119,6 @@ public class Breakout extends GraphicsProgram {
 	private void openScreen() {
 		makeLabel("Let's play BREAKOUT! Click to play.", Color.RED);
 		waitForClick();
-		pause(TURN_PAUSE_TIME);
 		removeAll();
 	}
 
