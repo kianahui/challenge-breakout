@@ -378,12 +378,8 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	/*
-	 * When the mouse is pressed, the velocity of the ball changes
-	 * by a random number generator.
+	 * Sets the velocity of the ball.
 	 */
-	public void mousePressed(MouseEvent e) {
-
-	}
 	
 	private void getVelocity () {
 		vx = rgen.nextDouble(1.0, 3.0);
