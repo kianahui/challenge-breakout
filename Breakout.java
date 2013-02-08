@@ -172,6 +172,8 @@ public class Breakout extends GraphicsProgram {
 					add(label);
 					waitForClick();
 					remove(label);
+					makeBall();
+					pause(TURN_PAUSE_TIME);
 				}
 				if (turnsRemaining == 1) {
 					GLabel label = new GLabel("Click for new ball. " + turnsRemaining + " turn left.");
@@ -183,9 +185,9 @@ public class Breakout extends GraphicsProgram {
 					add(label);
 					waitForClick();
 					remove(label);
+					makeBall();
+					pause(TURN_PAUSE_TIME);
 				}
-				makeBall();
-				pause(TURN_PAUSE_TIME);
 			}
 		}
 		/*
