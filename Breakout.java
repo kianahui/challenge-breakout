@@ -10,6 +10,7 @@
 import acm.graphics.*;
 import acm.program.*;
 import acm.util.*;
+import acmx.export.javax.swing.JButton;
 
 import java.applet.*;
 import java.awt.*;
@@ -106,9 +107,12 @@ public class Breakout extends GraphicsProgram {
 	 */
 	private void openScreen() {
 		makeLabel("Play BREAKOUT!", Color.RED);
-		String name = readLine("Please Enter your name: ");
+		/*String name = readLine("Please Enter your name: ");
+		name.set  = (30, 40);
 		println("Hello " + name);
-		waitForClick();
+		waitForClick();*/
+		JButton startButton = new JButton ("Start");
+		add(startButton, SOUTH);
 		pause(TURN_PAUSE_TIME);
 		removeAll();
 	}
