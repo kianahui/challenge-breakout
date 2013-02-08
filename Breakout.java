@@ -106,10 +106,9 @@ public class Breakout extends GraphicsProgram {
 	 * their name.
 	 */
 	private void openScreen() {
-		//init();
-	/*	remove(startButton);
-		makeLabel("Play BREAKOUT!", Color.RED);
-		String name = new GLabel ();
+		/*remove(startButton);
+		makeLabel("Let's play BREAKOUT!", Color.RED);
+		//String name = new GLabel ();
 		name = readLine("Please Enter your name: ");
 		println("Hello " + name);*/
 		waitForClick();
@@ -122,12 +121,12 @@ public class Breakout extends GraphicsProgram {
 		add(startButton, SOUTH);
 		addActionListeners();
 		pause(3000);
-		remove(JButton);
+		removeAll();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Start")) {
-			pause(TURN_PAUSE_TIME);
+			pause(3000);
 		}
 		removeAll();
 	}
