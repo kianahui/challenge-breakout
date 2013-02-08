@@ -71,12 +71,6 @@ public class Breakout extends GraphicsProgram {
 	/* Initial change in y to move the ball */
 	private static int INITIAL_Y = 5;
 	
-	/* 
-	 * Constant for change in y to move the ball, to be initiated
-	 * once half the bricks are gone
-	 */
-	private static int SECOND_Y = 10;
-	
 	/* Audio file for bouncing */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
 	
@@ -179,6 +173,9 @@ public class Breakout extends GraphicsProgram {
 				remove(ball);
 				if (turnsRemaining == 2) {
 					waitBetweenTurns("Click for new ball. " + turnsRemaining + " turns left.");
+					paddle.setColor(Color.WHITE);
+					setBackground(Color.BLACK);
+					ball.setColor(Color.WHITE);
 				}
 				if (turnsRemaining == 1) {
 					waitBetweenTurns("Click for new ball. You're on your last life...");
