@@ -122,7 +122,7 @@ public class Breakout extends GraphicsProgram {
 	 * upon clicking.
 	 */
 	private void openScreen() {
-		makeLabel("Let's play BREAKOUT! Click to play.", Color.RED);
+		makeLabel("Let's play BREAKOUT! Click to play.", Color.RED, "Braggadocio-15");
 		waitForClick();
 		removeAll();
 	}
