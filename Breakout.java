@@ -162,11 +162,11 @@ public class Breakout extends GraphicsProgram {
 		removeAll();
 		if (turnsRemaining == 0) {
 			makeLabel("GAME OVER!", Color.RED);
-			gameWonClip.play();
+			gameLostClip.play();
 		}
 		if (bricksRemaining == 0) {
 			makeLabel("YOU WIN!", Color.BLUE);
-			gameLostClip.play();
+			gameWonClip.play();
 		}
 	}
 	
