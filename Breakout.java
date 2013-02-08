@@ -254,7 +254,7 @@ public class Breakout extends GraphicsProgram {
 				vy = -vy;
 				bricksRemaining--;
 			}
-			if (bricksRemaining < (TOTAL_BRICKS / 2)) {
+			if (bricksRemaining < (49) {
 				ball.setColor(color);
 			}
 		}
