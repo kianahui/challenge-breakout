@@ -148,7 +148,6 @@ public class Breakout extends GraphicsProgram {
 		getVelocity();
 		waitForClick();
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
-			keepScore();
 			checkForCollisions();
 			moveBall();
 			if (isBallAboveCeiling(ball)) {
@@ -225,7 +224,8 @@ public class Breakout extends GraphicsProgram {
 	private void createCounter() {
 		GLabel points = new GLabel ("Your current points: " + pointTotal);
 		points.setLocation(WIDTH - points.getWidth(), HEIGHT - points.getHeight());
-		points.setFont("Verdana-10");
+		points.setFont("Arial-10");
+		points.setColor(Color.DARK_GRAY);
 		add(points);
 	}
 	
@@ -247,6 +247,7 @@ public class Breakout extends GraphicsProgram {
 				bricksRemaining--;
 			}
 		}
+		keepScore();
 	}
 	
 	/*
