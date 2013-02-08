@@ -106,6 +106,7 @@ public class Breakout extends GraphicsProgram {
 	 * their name.
 	 */
 	private void openScreen() {
+		init();
 		makeLabel("Play BREAKOUT!", Color.RED);
 		/*String name = readLine("Please Enter your name: ");
 		name.set  = (30, 40);
