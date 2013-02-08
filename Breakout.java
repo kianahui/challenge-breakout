@@ -296,6 +296,7 @@ public class Breakout extends GraphicsProgram {
 	 * of bricks remaining to the total bricks present.
 	 */
 	private void createGame() {
+		startButton.setVisible(false);
 		buildBricks();
 		bricksRemaining = NBRICK_ROWS * NBRICKS_PER_ROW;
 		buildPaddle();	
