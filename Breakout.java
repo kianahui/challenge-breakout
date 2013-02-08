@@ -75,6 +75,8 @@ public class Breakout extends GraphicsProgram {
 	
 	AudioClip gameLostClip = MediaTools.loadAudioClip("smb_gameover.wav");
 	
+	AudioClip oneTurnLeftClip = MediaTools.loadAudioClip("IntroEyeoftheTiger1.wav");
+	
 	/* Method: run() */
 	/** Runs the Breakout program. */
 	
@@ -152,6 +154,7 @@ public class Breakout extends GraphicsProgram {
 				}
 				if (turnsRemaining == 1) {
 					displayTurns("Click for new ball. You're on your last life...");
+					oneTurnLeftClip.play();
 				}
 			}
 		}
@@ -161,6 +164,7 @@ public class Breakout extends GraphicsProgram {
 		 */
 		removeAll();
 		if (turnsRemaining == 0) {
+			oneTurnLeftClip.stop();
 			makeLabel("GAME OVER!", Color.RED);
 			gameLostClip.play();
 		}
