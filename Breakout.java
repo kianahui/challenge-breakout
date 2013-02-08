@@ -14,6 +14,7 @@ import acm.util.*;
 import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Random;
 
 public class Breakout extends GraphicsProgram {
 
@@ -104,6 +105,8 @@ public class Breakout extends GraphicsProgram {
 	/* Instance variable to generate random numbers */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 	
+	private Color color = rgen.nextColor();
+	
 	public void run() {
 		openScreen();
 		addMouseListeners();
@@ -119,8 +122,6 @@ public class Breakout extends GraphicsProgram {
 		waitForClick();
 		removeAll();
 	}
-
-
 	
 	private void playGame() {
 		/*
@@ -159,7 +160,7 @@ public class Breakout extends GraphicsProgram {
 			GLabel points = new GLabel ("Your current points: " + pointTotal);
 			points.setLocation(WIDTH - points.getWidth(), HEIGHT - points.getHeight());
 			points.setFont("Arial-10");
-			points.setColor(Color.DARK_GRAY);
+			points.setColor(Color.GRAY);
 			add(points);
 			moveBall();
 			if (isBallAboveCeiling(ball)) {
@@ -180,6 +181,9 @@ public class Breakout extends GraphicsProgram {
 				if (turnsRemaining == 1) {
 					waitBetweenTurns("Click for new ball. You're on your last life...");
 					oneTurnLeftClip.play();
+					paddle.setColor(color);
+					ball.setColor(color);
+					setBackground(Color.WHITE);
 				}
 			}
 			remove(points);
