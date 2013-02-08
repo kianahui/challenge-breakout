@@ -150,7 +150,12 @@ public class Breakout extends GraphicsProgram {
 		waitForClick();
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
-			keepScore();
+			GLabel points = new GLabel ("Your current points: " + pointTotal);
+			points.setLocation(WIDTH - points.getWidth(), HEIGHT - points.getHeight());
+			points.setFont("Arial-10");
+			points.setColor(Color.DARK_GRAY);
+			add(points);
+			remove(points);
 			moveBall();
 			if (isBallAboveCeiling(ball)) {
 				bounceClip.play();
@@ -230,6 +235,7 @@ public class Breakout extends GraphicsProgram {
 		points.setFont("Arial-10");
 		points.setColor(Color.DARK_GRAY);
 		add(points);
+		remove(points);
 	}
 	
 	/*
