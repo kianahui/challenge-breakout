@@ -111,6 +111,7 @@ public class Breakout extends GraphicsProgram {
 		//String name = new GLabel ();
 		name = readLine("Please Enter your name: ");
 		println("Hello " + name);*/
+		init();
 		waitForClick();
 		pause(TURN_PAUSE_TIME);
 		removeAll();
