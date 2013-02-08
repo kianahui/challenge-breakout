@@ -143,6 +143,7 @@ public class Breakout extends GraphicsProgram {
 		 * When there is one turn left, an audio file also plays.
 		 */
 		getVelocity();
+		waitForClick();
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
 			moveBall();
