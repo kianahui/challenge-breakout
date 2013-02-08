@@ -181,6 +181,10 @@ public class Breakout extends GraphicsProgram {
 				}
 			}
 			remove(points);
+			/*
+			 * If the user makes it past half the total number of bricks,
+			 * the speed of the ball doubles.
+			 */
 			if (bricksRemaining < (TOTAL_BRICKS / 2)) {
 				vy = INITIAL_Y * 2;
 			}
