@@ -121,6 +121,8 @@ public class Breakout extends GraphicsProgram {
 		JButton startButton = new JButton ("Start");
 		add(startButton, SOUTH);
 		addActionListeners();
+		pause(3000);
+		remove(startButton);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
