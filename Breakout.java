@@ -186,13 +186,6 @@ public class Breakout extends GraphicsProgram {
 				}
 			}
 			remove(points);
-			/*
-			 * If the user makes it past half the total number of bricks,
-			 * the speed of the ball increases.
-			 */
-			if (bricksRemaining < (TOTAL_BRICKS / 2)) {
-				vy = SECOND_Y;
-			}
 		}
 		/*
 		 * Once the game is over, the screen is cleared,
@@ -252,9 +245,7 @@ public class Breakout extends GraphicsProgram {
 		if (collider != null) {
 			if (collider == paddle) {
 				bounceClip.play();
-				if (vy == INITIAL_Y) {
 				vy = -Math.abs(vy);
-				} 
 			} else {
 				remove(collider);
 				bounceClip.play();
