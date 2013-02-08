@@ -73,7 +73,7 @@ public class Breakout extends GraphicsProgram {
 	
 	AudioClip gameWonClip = MediaTools.loadAudioClip("Applause.wav");
 	
-	AudioClip gameLostClip = MediaTools.loadAudioClip("Gameover.mp3");
+	AudioClip gameLostClip = MediaTools.loadAudioClip("smb_gameover.wav");
 	
 	/* Method: run() */
 	/** Runs the Breakout program. */
@@ -162,7 +162,7 @@ public class Breakout extends GraphicsProgram {
 		removeAll();
 		if (turnsRemaining == 0) {
 			makeLabel("GAME OVER!", Color.RED);
-			gameWonClip.play();
+			gameLostClip.play();
 		}
 		if (bricksRemaining == 0) {
 			makeLabel("YOU WIN!", Color.BLUE);
