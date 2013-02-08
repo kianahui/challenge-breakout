@@ -92,6 +92,8 @@ public class Breakout extends GraphicsProgram {
 	/* Instance variable to make the ball accessible */
 	private GOval ball;
 	
+	private GOval ball2;
+	
 	/* Instance variable to make the brick accessible */
 	private GRect brick;
 	
@@ -129,6 +131,11 @@ public class Breakout extends GraphicsProgram {
 		 */
 		int turnsRemaining = NTURNS;
 		/*
+		 * Sets the velocity for the ball and waits for a click to continue.
+		 */
+		getVelocity();
+		waitForClick();
+		/*
 		 * A while loop that continues while the number
 		 * of turns remaining is greater than 0 and the number
 		 * of bricks remaining is greater than 0.
@@ -147,8 +154,6 @@ public class Breakout extends GraphicsProgram {
 		 * points. One brick is equal to one point. The points are rewritten with
 		 * every succession of the while loop.
 		 */
-		getVelocity();
-		waitForClick();
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
 			int pointTotal = TOTAL_BRICKS - bricksRemaining;
@@ -168,14 +173,17 @@ public class Breakout extends GraphicsProgram {
 				turnsRemaining--;
 				remove(ball);
 				if (turnsRemaining == 2) {
-					displayTurns("Click for new ball. " + turnsRemaining + " turns left.");
+					waitBetweenTurns("Click for new ball. " + turnsRemaining + " turns left.");
 				}
 				if (turnsRemaining == 1) {
-					displayTurns("Click for new ball. You're on your last life...");
+					waitBetweenTurns("Click for new ball. You're on your last life...");
 					oneTurnLeftClip.play();
 				}
 			}
 			remove(points);
+			if (bricksRemaining < (TOTAL_BRICKS / 2)) {
+				vy = INITIAL_Y * 2;
+			}
 		}
 		/*
 		 * Once the game is over, the screen is cleared,
@@ -211,7 +219,7 @@ public class Breakout extends GraphicsProgram {
 	 * A method that creates a label to display the number of turns
 	 * left between turns as well as make a new ball.
 	 */
-	private void displayTurns(String phrase) {
+	private void waitBetweenTurns(String phrase) {
 		GLabel label = new GLabel(phrase);
 		label.setFont("SansSerif-15");
 		label.setColor(Color.MAGENTA);
@@ -219,10 +227,6 @@ public class Breakout extends GraphicsProgram {
 		double y = (getHeight() + label.getAscent()) / 2;
 		label.setLocation(x, y);
 		add(label);
-		waitForClick();
-		remove(label);
-		makeBall();
-		pause(TURN_PAUSE_TIME);
 	}
 	
 	/*
