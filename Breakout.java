@@ -150,6 +150,7 @@ public class Breakout extends GraphicsProgram {
 		waitForClick();
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
+			pointTotal = TOTAL_BRICKS - bricksRemaining;
 			GLabel points = new GLabel ("Your current points: " + pointTotal);
 			points.setLocation(WIDTH - points.getWidth(), HEIGHT - points.getHeight());
 			points.setFont("Arial-10");
