@@ -71,10 +71,13 @@ public class Breakout extends GraphicsProgram {
 	/* Audio file for bouncing */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
 	
+	/* Audio file for when the game is won */
 	AudioClip gameWonClip = MediaTools.loadAudioClip("Applause.wav");
 	
+	/* Audio file for when the game is lost */
 	AudioClip gameLostClip = MediaTools.loadAudioClip("smb_gameover.wav");
 	
+	/* Audio file for when there is one turn left */
 	AudioClip oneTurnLeftClip = MediaTools.loadAudioClip("IntroEyeoftheTiger1.wav");
 	
 	/* Method: run() */
@@ -136,7 +139,10 @@ public class Breakout extends GraphicsProgram {
 		 * moves again. A message is displayed with the number of turns
 		 * remaining. The number of turns remaining is subtracted by 1
 		 * every time the ball hits the ground.
+		 * 
+		 * When there is one turn left, an audio file also plays.
 		 */
+		getVelocity();
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
 			moveBall();
@@ -160,7 +166,8 @@ public class Breakout extends GraphicsProgram {
 		}
 		/*
 		 * Once the game is over, the screen is cleared,
-		 * and text is displayed showing if the user won or lost.
+		 * and text is displayed showing if the user won or lost. An audio
+		 * clip is also played.
 		 */
 		removeAll();
 		if (turnsRemaining == 0) {
@@ -374,6 +381,10 @@ public class Breakout extends GraphicsProgram {
 	 * by a random number generator.
 	 */
 	public void mousePressed(MouseEvent e) {
+
+	}
+	
+	private void getVelocity () {
 		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)) vx = -vx;
 		vy = INITIAL_Y;
