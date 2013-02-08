@@ -101,10 +101,10 @@ public class Breakout extends GraphicsProgram {
 	/* Instance variable to keep track of the velocity of the ball */
 	private double vx, vy;
 	
+	private int turnsRemaining;
+	
 	/* Instance variable to generate random numbers */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
-	
-	private Color color = rgen.nextColor();
 	
 	public void run() {
 		openScreen();
@@ -127,7 +127,7 @@ public class Breakout extends GraphicsProgram {
 		 * Creates a variable for the number of turns remaining,
 		 * set at the total number of turns here.
 		 */
-		int turnsRemaining = NTURNS;
+		turnsRemaining = NTURNS;
 		/*
 		 * Sets the velocity for the ball and waits for the user to click
 		 * to continue.
@@ -180,9 +180,6 @@ public class Breakout extends GraphicsProgram {
 				if (turnsRemaining == 1) {
 					waitBetweenTurns("Click for new ball. You're on your last life...");
 					oneTurnLeftClip.play();
-					paddle.setColor(Color.DARK_GRAY);
-					ball.setColor(Color.GRAY);
-					setBackground(Color.WHITE);
 					
 				}
 			}
@@ -253,8 +250,10 @@ public class Breakout extends GraphicsProgram {
 				vy = -vy;
 				bricksRemaining--;
 			}
-			if (bricksRemaining < 49) {
+			if (turnsRemaining == 1) {
 				ball.setColor(rgen.nextColor());
+				paddle.setColor(rgen.nextColor());
+				setBackground(rgen.nextColor());
 			}
 		}
 	}
