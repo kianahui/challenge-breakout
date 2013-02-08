@@ -225,7 +225,7 @@ public class Breakout extends GraphicsProgram {
 	private void createCounter() {
 		GLabel points = new GLabel ("Your current points: " + pointTotal);
 		points.setLocation(WIDTH - points.getWidth(), HEIGHT - points.getHeight());
-		points.setFont("Courier - 10");
+		points.setFont("Courier New - 10");
 		add(points);
 	}
 	
