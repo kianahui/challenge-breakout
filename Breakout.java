@@ -111,12 +111,23 @@ public class Breakout extends GraphicsProgram {
 		name.set  = (30, 40);
 		println("Hello " + name);
 		waitForClick();*/
-		JButton startButton = new JButton ("Start");
-		add(startButton, SOUTH);
+		init();
 		pause(TURN_PAUSE_TIME);
 		removeAll();
 	}
 
+	public void init() {
+		JButton startButton = new JButton ("Start");
+		add(startButton, SOUTH);
+		addActionListeners();
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getActionCommand().equals("Start")) {
+			println("Hi.");
+		}
+	}
+	
 	private void playGame() {
 		/*
 		 * Creates a variable for the number of turns remaining,
