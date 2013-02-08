@@ -216,7 +216,7 @@ public class Breakout extends GraphicsProgram {
 		removeAll();
 		if (turnsRemaining == 0) {
 			oneTurnLeftClip.stop();
-			makeLabel("GAME OVER!", Color.RED);
+			makeLabel("GAME OVER!", Color.RED, "Impact-20");
 			setBackground(Color.BLACK);
 			GLabel label = new GLabel("You had to destroy " + bricksRemaining + " more bricks!");
 			label.setFont("Arial-BOLD-15");
@@ -226,12 +226,12 @@ public class Breakout extends GraphicsProgram {
 			GLabel meanlabel = new GLabel("But you didn't.");
 			meanlabel.setFont("Britannic Bold-15");
 			meanlabel.setColor(Color.CYAN);
-			meanlabel.setLocation((getWidth() - label.getWidth()) / 2, getHeight() - label.getHeight());
+			meanlabel.setLocation((getWidth() - meanlabel.getWidth()) / 2, getHeight() - meanlabel.getHeight());
 			add(meanlabel);
 			gameLostClip.play();
 		}
 		if (bricksRemaining == 0) {
-			makeLabel("YOU WIN!", Color.BLUE);
+			makeLabel("YOU WIN!", Color.BLUE, "Impact-30");
 			gameWonClip.play();
 		}
 	}
@@ -239,9 +239,9 @@ public class Breakout extends GraphicsProgram {
 	/*
 	 * A method that creates a label.
 	 */
-	private void makeLabel(String phrase, Color color) {
+	private void makeLabel(String phrase, Color color, String font) {
 		GLabel label = new GLabel(phrase);
-		label.setFont("Impact-20");
+		label.setFont(font);
 		label.setColor(color);
 		double x = (getWidth() - label.getWidth()) / 2;
 		double y = (getHeight() + label.getAscent()) / 2;
