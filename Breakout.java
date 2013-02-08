@@ -101,6 +101,9 @@ public class Breakout extends GraphicsProgram {
 	/* Instance variable to keep track of the velocity of the ball */
 	private double vx, vy;
 	
+	/* Instance variable to keep track of the point total */
+	private int pointTotal;
+	
 	/* Instance variable to generate random numbers */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 	
@@ -142,16 +145,11 @@ public class Breakout extends GraphicsProgram {
 		 * every time the ball hits the ground.
 		 * 
 		 * When there is one turn left, an audio file also plays.
-		 * 
-		 * Points are kept track of by setting a variable to equal the total
-		 * points. One brick is equal to one point. The points are rewritten with
-		 * every succession of the while loop.
 		 */
 		getVelocity();
 		waitForClick();
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
-			int pointTotal = TOTAL_BRICKS - bricksRemaining;
 			GLabel points = new GLabel ("Your current points: " + pointTotal);
 			points.setLocation(WIDTH - points.getWidth(), HEIGHT - points.getHeight());
 			points.setFont("Arial-10");
@@ -223,6 +221,20 @@ public class Breakout extends GraphicsProgram {
 		remove(label);
 		makeBall();
 		pause(TURN_PAUSE_TIME);
+	}
+
+	private void keepScore() {
+		pointTotal = TOTAL_BRICKS - bricksRemaining;
+		createCounter();
+	}
+	
+	private void createCounter() {
+		GLabel points = new GLabel ("Your current points: " + pointTotal);
+		points.setLocation(WIDTH - points.getWidth(), HEIGHT - points.getHeight());
+		points.setFont("Arial-10");
+		points.setColor(Color.DARK_GRAY);
+		add(points);
+		remove(points);
 	}
 	
 	/*
