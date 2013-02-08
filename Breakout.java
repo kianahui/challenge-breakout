@@ -110,7 +110,6 @@ public class Breakout extends GraphicsProgram {
 		openScreen();
 		addMouseListeners();
 		createGame();
-		keepScore();
 		playGame();
 	}
 	
@@ -149,6 +148,7 @@ public class Breakout extends GraphicsProgram {
 		getVelocity();
 		waitForClick();
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
+			keepScore();
 			checkForCollisions();
 			moveBall();
 			if (isBallAboveCeiling(ball)) {
