@@ -230,6 +230,7 @@ public class Breakout extends GraphicsProgram {
 		points.setFont("Arial-10");
 		points.setColor(Color.DARK_GRAY);
 		add(points);
+		remove(points);
 	}
 	
 	/*
