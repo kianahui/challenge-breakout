@@ -101,9 +101,6 @@ public class Breakout extends GraphicsProgram {
 	/* Instance variable to keep track of the velocity of the ball */
 	private double vx, vy;
 	
-	/* Instance variable to keep track of the point total */
-	private int pointTotal;
-	
 	/* Instance variable to generate random numbers */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 	
@@ -146,7 +143,9 @@ public class Breakout extends GraphicsProgram {
 		 * 
 		 * When there is one turn left, an audio file also plays.
 		 * 
-		 * Points are kept track of by setting 
+		 * Points are kept track of by setting a variable to equal the total
+		 * points. One brick is equal to one point. The points are rewritten with
+		 * every succession of the while loop.
 		 */
 		getVelocity();
 		waitForClick();
