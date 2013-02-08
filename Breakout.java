@@ -111,7 +111,6 @@ public class Breakout extends GraphicsProgram {
 		name.set  = (30, 40);
 		println("Hello " + name);
 		waitForClick();*/
-		init();
 		/*pause(TURN_PAUSE_TIME);
 		removeAll();*/
 	}
