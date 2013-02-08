@@ -131,7 +131,8 @@ public class Breakout extends GraphicsProgram {
 		 */
 		int turnsRemaining = NTURNS;
 		/*
-		 * Sets the velocity for the ball and waits for a click to continue.
+		 * Sets the velocity for the ball and waits for the user to click
+		 * to continue.
 		 */
 		getVelocity();
 		waitForClick();
@@ -181,15 +182,7 @@ public class Breakout extends GraphicsProgram {
 				}
 			}
 			remove(points);
-			/*
-			 * If the user makes it past half the total number of bricks,
-			 * the speed of the ball doubles.
-			 */
-			if (bricksRemaining < (TOTAL_BRICKS / 2)) {
-				vy = INITIAL_Y * 2;
-			}
 		}
-		
 		/*
 		 * Once the game is over, the screen is cleared,
 		 * and text is displayed showing if the user won or lost. An audio
