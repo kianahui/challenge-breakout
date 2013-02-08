@@ -71,6 +71,10 @@ public class Breakout extends GraphicsProgram {
 	/* Audio file for bouncing */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
 	
+	AudioClip gameWonClip = MediaTools.loadAudioClip("Applause.wav");
+	
+	AudioClip gameLostClip = MediaTools.loadAudioClip("Gameover.mp3");
+	
 	/* Method: run() */
 	/** Runs the Breakout program. */
 	
@@ -101,14 +105,10 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	/*
-	 * A welcome screen that displays a message and asks the user to input
-	 * their name.
+	 * A welcome screen that displays a message.
 	 */
 	private void openScreen() {
 		makeLabel("Let's play BREAKOUT! Click to play.", Color.RED);
-		/*String name = new GLabel ();
-		name = readLine("Please Enter your name: ");
-		println("Hello " + name);*/
 		waitForClick();
 		pause(TURN_PAUSE_TIME);
 		removeAll();
@@ -162,9 +162,11 @@ public class Breakout extends GraphicsProgram {
 		removeAll();
 		if (turnsRemaining == 0) {
 			makeLabel("GAME OVER!", Color.RED);
+			gameWonClip.play();
 		}
 		if (bricksRemaining == 0) {
 			makeLabel("YOU WIN!", Color.BLUE);
+			gameLostClip.play();
 		}
 	}
 	
@@ -216,9 +218,6 @@ public class Breakout extends GraphicsProgram {
 				vy = -vy;
 				bricksRemaining--;
 			}
-			/*if (bricksRemaining < ((NBRICK_ROWS * NBRICKS_PER_ROW) / 2)) {
-				INITIAL_Y = INITIAL_Y * 2;
-			}*/
 		}
 
 	}
@@ -369,9 +368,6 @@ public class Breakout extends GraphicsProgram {
 	/*
 	 * When the mouse is pressed, the velocity of the ball changes
 	 * by a random number generator.
-	 * 
-	 * If there are half the number of bricks remaining, the speed
-	 * of the ball doubles.
 	 */
 	public void mousePressed(MouseEvent e) {
 		vx = rgen.nextDouble(1.0, 3.0);
