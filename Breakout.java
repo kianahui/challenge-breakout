@@ -181,11 +181,9 @@ public class Breakout extends GraphicsProgram {
 				if (turnsRemaining == 1) {
 					waitBetweenTurns("Click for new ball. You're on your last life...");
 					oneTurnLeftClip.play();
-					while(true) {
-						paddle.setColor(color);
-						ball.setColor(color);
-						setBackground(color);
-					}
+					paddle.setColor(Color.DARK_GRAY);
+					ball.setColor(Color.GRAY);
+					setBackground(Color.WHITE);
 					
 				}
 			}
@@ -255,6 +253,9 @@ public class Breakout extends GraphicsProgram {
 				bounceClip.play();
 				vy = -vy;
 				bricksRemaining--;
+			}
+			if (bricksRemaining < (TOTAL_BRICKS / 2)) {
+				ball.setColor(color);
 			}
 		}
 	}
