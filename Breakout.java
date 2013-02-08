@@ -92,8 +92,6 @@ public class Breakout extends GraphicsProgram {
 	/* Instance variable to make the ball accessible */
 	private GOval ball;
 	
-	private GOval ball2;
-	
 	/* Instance variable to make the brick accessible */
 	private GRect brick;
 	
@@ -170,10 +168,10 @@ public class Breakout extends GraphicsProgram {
 				turnsRemaining--;
 				remove(ball);
 				if (turnsRemaining == 2) {
-					waitBetweenTurns("Click for new ball. " + turnsRemaining + " turns left.");
+					displayTurns("Click for new ball. " + turnsRemaining + " turns left.");
 				}
 				if (turnsRemaining == 1) {
-					waitBetweenTurns("Click for new ball. You're on your last life...");
+					displayTurns("Click for new ball. You're on your last life...");
 					oneTurnLeftClip.play();
 				}
 			}
@@ -213,7 +211,7 @@ public class Breakout extends GraphicsProgram {
 	 * A method that creates a label to display the number of turns
 	 * left between turns as well as make a new ball.
 	 */
-	private void waitBetweenTurns(String phrase) {
+	private void displayTurns(String phrase) {
 		GLabel label = new GLabel(phrase);
 		label.setFont("SansSerif-15");
 		label.setColor(Color.MAGENTA);
@@ -221,6 +219,10 @@ public class Breakout extends GraphicsProgram {
 		double y = (getHeight() + label.getAscent()) / 2;
 		label.setLocation(x, y);
 		add(label);
+		waitForClick();
+		remove(label);
+		makeBall();
+		pause(TURN_PAUSE_TIME);
 	}
 	
 	/*
