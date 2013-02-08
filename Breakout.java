@@ -155,7 +155,6 @@ public class Breakout extends GraphicsProgram {
 			points.setFont("Arial-10");
 			points.setColor(Color.DARK_GRAY);
 			add(points);
-			remove(points);
 			moveBall();
 			if (isBallAboveCeiling(ball)) {
 				bounceClip.play();
@@ -174,7 +173,7 @@ public class Breakout extends GraphicsProgram {
 					oneTurnLeftClip.play();
 				}
 			}
-			createCounter();
+			remove(points);
 		}
 		/*
 		 * Once the game is over, the screen is cleared,
