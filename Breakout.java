@@ -221,6 +221,10 @@ public class Breakout extends GraphicsProgram {
 		double y = (getHeight() + label.getAscent()) / 2;
 		label.setLocation(x, y);
 		add(label);
+		waitForClick();
+		remove(label);
+		makeBall();
+		pause(TURN_PAUSE_TIME);
 	}
 	
 	/*
