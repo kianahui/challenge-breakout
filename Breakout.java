@@ -54,6 +54,7 @@ public class Breakout extends GraphicsProgram {
 	/** Radius of the ball in pixels */
 	private static final int BALL_RADIUS = 10;
 	
+	/** Diameter of the ball in pixels */
 	private static final int BALL_DIAMETER = BALL_RADIUS * 2;
 
 	/** Offset of the top brick row from the top */
@@ -83,9 +84,6 @@ public class Breakout extends GraphicsProgram {
 	/* Audio file for when there is one turn left */
 	AudioClip oneTurnLeftClip = MediaTools.loadAudioClip("IntroEyeoftheTiger1.wav");
 	
-	/* Method: run() */
-	/** Runs the Breakout program. */
-	
 	/* Instance variable to make the paddle accessible */
 	private GRect paddle;
 	
@@ -101,11 +99,14 @@ public class Breakout extends GraphicsProgram {
 	/* Instance variable to keep track of the velocity of the ball */
 	private double vx, vy;
 	
+	/* Instance variable to keep track of the number of turns remaining */
 	private int turnsRemaining;
 	
 	/* Instance variable to generate random numbers */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 	
+	
+	/** Runs the Breakout program. */
 	public void run() {
 		openScreen();
 		addMouseListeners();
@@ -114,7 +115,8 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	/*
-	 * A welcome screen that displays a message.
+	 * A welcome screen that displays a message. The message is wiped
+	 * upon clicking.
 	 */
 	private void openScreen() {
 		makeLabel("Let's play BREAKOUT! Click to play.", Color.RED);
@@ -138,29 +140,25 @@ public class Breakout extends GraphicsProgram {
 		 * A while loop that continues while the number
 		 * of turns remaining is greater than 0 and the number
 		 * of bricks remaining is greater than 0.
-		 * 
-		 * First, the loop checks for collisions and moves the ball.
-		 * If the ball hits the window frame, it reverses direction.
-		 * If the ball hits the ground, it is removed, and the user
-		 * must click to make a new ball appear that will pause until it
-		 * moves again. A message is displayed with the number of turns
-		 * remaining. The number of turns remaining is subtracted by 1
-		 * every time the ball hits the ground.
-		 * 
-		 * When there is one turn left, an audio file also plays.
-		 * 
-		 * Points are kept track of by setting a variable to equal the total
-		 * points. One brick is equal to one point. The points are rewritten with
-		 * every succession of the while loop.
 		 */
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
+			/* 
+			 * Points are kept track of by setting a variable to equal the total
+			 * points. One brick is equal to one point. The points are rewritten with
+			 * every succession of the while loop.
+			 */
 			int pointTotal = TOTAL_BRICKS - bricksRemaining;
 			GLabel points = new GLabel ("Your current points: " + pointTotal);
 			points.setLocation(WIDTH - points.getWidth(), HEIGHT - points.getHeight());
 			points.setFont("Arial-10");
 			points.setColor(Color.GRAY);
 			add(points);
+			/*
+			 * The ball moves. If the ball hits the window frame, it reverses direction.
+			 * If the ball hits the ground, it is removed, and the user must click
+			 * to make a new ball appear. This ball will pause before moving again.
+			 */
 			moveBall();
 			if (isBallAboveCeiling(ball)) {
 				bounceClip.play();
@@ -169,18 +167,38 @@ public class Breakout extends GraphicsProgram {
 				bounceClip.play();
 				vx = -vx;
 			} else if (isBallBelowGround(ball)) {
+				/*
+				 * The number of turns remaining is subtracted by one every time the 
+				 * ball goes below the ground. The ball is also removed.
+				 */
 				turnsRemaining--;
 				remove(ball);
 				if (turnsRemaining == 2) {
+					/* 
+					 * A message is displayed with the number of turns
+					 * remaining. A new ball is also made in the wait between turns.
+					 */
 					waitBetweenTurns("Click for new ball. " + turnsRemaining + " turns left.");
+					/*
+					 * Sets the paddle, background, and ball color to go into night mode.
+					 */
 					paddle.setColor(Color.WHITE);
 					setBackground(Color.BLACK);
 					ball.setColor(Color.WHITE);
 				}
 				if (turnsRemaining == 1) {
+					/*
+					 * A message is displayed with the number of turns
+					 * remaining. A new ball is also made in the wait between turns. Music
+					 * is played this round to inspire the user.
+					 */
 					waitBetweenTurns("Click for new ball. You're on your last life...");
 					oneTurnLeftClip.play();
-					paddle.setColor(Color.GRAY);
+					/*
+					 * Sets the paddle, background, and ball color (which eventually change upon 
+					 * collision) to go into awesome mode.
+					 */
+					paddle.setColor(Color.BLACK);
 					setBackground(Color.WHITE);
 					ball.setColor(Color.GRAY);
 				}
@@ -196,6 +214,13 @@ public class Breakout extends GraphicsProgram {
 		if (turnsRemaining == 0) {
 			oneTurnLeftClip.stop();
 			makeLabel("GAME OVER!", Color.RED);
+			GLabel label = new GLabel("You had to destroy " + bricksRemaining + "more bricks!");
+			label.setFont("Arial-15");
+			label.setColor(Color.ORANGE);
+			double x = getWidth() / 2;
+			double y = getHeight() / 2;
+			label.setLocation(x, y);
+			add(label);
 			gameLostClip.play();
 		}
 		if (bricksRemaining == 0) {
@@ -239,6 +264,9 @@ public class Breakout extends GraphicsProgram {
 	 * A method that checks for collisions by setting an object
 	 * to something that has collided. The ball bounces off the
 	 * paddle and deletes bricks if hit.
+	 * 
+	 * In the case where the user is on their last turn, the ball
+	 * and background change color every time there is a collision.
 	 */
 	private void checkForCollisions() {
 		GObject collider = getCollidingObject();
@@ -254,7 +282,6 @@ public class Breakout extends GraphicsProgram {
 			}
 			if (turnsRemaining == 1) {
 				ball.setColor(rgen.nextColor());
-				paddle.setColor(rgen.nextColor());
 				setBackground(rgen.nextColor());
 			}
 		}
