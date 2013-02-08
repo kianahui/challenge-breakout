@@ -69,7 +69,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int TURN_PAUSE_TIME = 1000;
 	
 	/* Initial change in y to move the ball */
-	private static int INITIAL_Y = 7;
+	private static int INITIAL_Y = 10;
 	
 	/* Audio file for bouncing */
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
@@ -91,8 +91,6 @@ public class Breakout extends GraphicsProgram {
 	
 	/* Instance variable to make the ball accessible */
 	private GOval ball;
-	
-	private GOval ball2;
 	
 	/* Instance variable to make the brick accessible */
 	private GRect brick;
@@ -176,19 +174,19 @@ public class Breakout extends GraphicsProgram {
 				if (turnsRemaining == 2) {
 					waitBetweenTurns("Click for new ball. " + turnsRemaining + " turns left.");
 				}
-			/*	if (turnsRemaining == 1) {
+				if (turnsRemaining == 1) {
 					waitBetweenTurns("Click for new ball. You're on your last life...");
 					oneTurnLeftClip.play();
-				}*/
+				}
 			}
 			remove(points);
 			/*
 			 * If the user makes it past half the total number of bricks,
 			 * the speed of the ball doubles.
 			 */
-			if (bricksRemaining < (TOTAL_BRICKS / 2)) {
+		/*	if (bricksRemaining < (TOTAL_BRICKS / 2)) {
 				vy = INITIAL_Y * 2;
-			}
+			}*/
 		}
 		/*
 		 * Once the game is over, the screen is cleared,
