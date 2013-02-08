@@ -223,20 +223,6 @@ public class Breakout extends GraphicsProgram {
 		makeBall();
 		pause(TURN_PAUSE_TIME);
 	}
-
-	private void keepScore() {
-		pointTotal = TOTAL_BRICKS - bricksRemaining;
-		createCounter();
-	}
-	
-	private void createCounter() {
-		GLabel points = new GLabel ("Your current points: " + pointTotal);
-		points.setLocation(WIDTH - points.getWidth(), HEIGHT - points.getHeight());
-		points.setFont("Arial-10");
-		points.setColor(Color.DARK_GRAY);
-		add(points);
-		remove(points);
-	}
 	
 	/*
 	 * A method that checks for collisions by setting an object
