@@ -131,12 +131,6 @@ public class Breakout extends GraphicsProgram {
 		 */
 		int turnsRemaining = NTURNS;
 		/*
-		 * Sets the velocity for the ball and waits for the user to click
-		 * to continue.
-		 */
-		getVelocity();
-		waitForClick();
-		/*
 		 * A while loop that continues while the number
 		 * of turns remaining is greater than 0 and the number
 		 * of bricks remaining is greater than 0.
@@ -155,6 +149,8 @@ public class Breakout extends GraphicsProgram {
 		 * points. One brick is equal to one point. The points are rewritten with
 		 * every succession of the while loop.
 		 */
+		getVelocity();
+		waitForClick();
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
 			int pointTotal = TOTAL_BRICKS - bricksRemaining;
