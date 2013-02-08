@@ -145,12 +145,14 @@ public class Breakout extends GraphicsProgram {
 		 * every time the ball hits the ground.
 		 * 
 		 * When there is one turn left, an audio file also plays.
+		 * 
+		 * Points are kept track of by setting 
 		 */
 		getVelocity();
 		waitForClick();
 		while (turnsRemaining > 0 && bricksRemaining > 0) {
 			checkForCollisions();
-			pointTotal = TOTAL_BRICKS - bricksRemaining;
+			int pointTotal = TOTAL_BRICKS - bricksRemaining;
 			GLabel points = new GLabel ("Your current points: " + pointTotal);
 			points.setLocation(WIDTH - points.getWidth(), HEIGHT - points.getHeight());
 			points.setFont("Arial-10");
@@ -174,7 +176,7 @@ public class Breakout extends GraphicsProgram {
 					oneTurnLeftClip.play();
 				}
 			}
-			//remove(points);
+			remove(points);
 		}
 		/*
 		 * Once the game is over, the screen is cleared,
