@@ -112,8 +112,8 @@ public class Breakout extends GraphicsProgram {
 		println("Hello " + name);
 		waitForClick();*/
 		init();
-		pause(TURN_PAUSE_TIME);
-		removeAll();
+		/*pause(TURN_PAUSE_TIME);
+		removeAll();*/
 	}
 
 	public void init() {
@@ -124,7 +124,8 @@ public class Breakout extends GraphicsProgram {
 	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Start")) {
-			println("Hi.");
+			pause(TURN_PAUSE_TIME);
+			removeAll();
 		}
 	}
 	
