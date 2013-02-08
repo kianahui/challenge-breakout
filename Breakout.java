@@ -209,7 +209,7 @@ public class Breakout extends GraphicsProgram {
 		if (collider != null) {
 			if (collider == paddle) {
 				bounceClip.play();
-				vy = -vy;
+				vy = -Math.abs(vy);
 			} else {
 				remove(collider);
 				bounceClip.play();
